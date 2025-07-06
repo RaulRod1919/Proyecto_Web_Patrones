@@ -84,6 +84,45 @@ header{
     color: white;
 }
 
+.paquete-completo{
+    background-image: url("/img/paqueteCompleto.png");
+    height: 85vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    place-items: center;
+    color: white;
+}
+
+.diseno-construccion{
+    background-image: url("/img/disenoContruccion.png");
+    height: 85vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    place-items: center;
+    color: white;
+}
+
+.solo-construccion{
+    background-image: url("/img/soloConstruccion.png");
+    height: 85vh;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    place-items: center;
+    color: white;
+}
+
 h1{
     font-size: 5em;
 }

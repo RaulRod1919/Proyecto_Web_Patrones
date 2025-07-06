@@ -22,14 +22,20 @@ public class EmpresaController {
     @Autowired
     private EmpresaService empresaService;
     
+    @GetMapping("/quienes-somos")
+    public String getinicio(Model model){
+        model.addAttribute("empresa", empresaService.getEmpresa());
+        return "home/quienes-somos";
+    }
+    
     @GetMapping("/tiposCons")
-    public String getInfo(Model model){
+    public String getTiposContruccion(Model model){
         model.addAttribute("empresa", empresaService.getEmpresa());
         return "home/tiposCons";
     }
     
     @GetMapping("/proyectos")
-    public String index(Model model){
+    public String getProyectos(Model model){
         model.addAttribute("empresa", empresaService.getEmpresa());
         return "home/proyectos";
     }

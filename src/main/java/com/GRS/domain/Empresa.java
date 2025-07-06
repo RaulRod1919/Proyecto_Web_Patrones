@@ -21,13 +21,10 @@ public class Empresa implements Serializable{
     @Column(name="id_empresa")
     private Long idEmpresa;
     private String descripcion;
-    @Column(name="tipos_construcciones")
-    private String tipoConstrucciones;
     private String nombre;
     
-    public Empresa(String descripcion, String tipoConstrucciones) {
+    public Empresa(String descripcion) {
         this.descripcion = descripcion;
-        this.tipoConstrucciones = tipoConstrucciones;
     }
 
     public Empresa() {
