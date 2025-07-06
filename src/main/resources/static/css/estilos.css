@@ -1,35 +1,33 @@
-html, body {
+html, body{
     margin: 0;
     height: 100%;
 }
 
-.bg-dark {
+.bg-dark{
     background-color: rgba(43, 45, 51, 1);
 }
 
-header {
+header{
     width: 100%;
     height: 15%;
     color: white;
     align-content: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.navegador {
+.navegador{
     display: grid;
     grid-template-columns: 1fr 5fr 1fr 1fr 0.1fr;
     grid-template-rows: 100%;
     height: 100%;
     width: 100%;
-    gap: 10px;
 }
 
-.nav-logo {
+.nav-logo{
     align-content: center;
     justify-self: center;
 }
 
-.nav-lista {
+.nav-lista{
     list-style: none;
     display: flex;
     padding: 0;
@@ -40,39 +38,26 @@ header {
     grid-template-rows: 100%;
 }
 
-.nav-lista a {
+.nav-lista a{
     text-decoration: none;
     color: inherit;
-    font-size: clamp(20px, calc(0.5em + 1vw), 1.7rem);
-    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: clamp(20px,calc(0.5em + 1vw),1.7rem);
 }
 
-.nav-lista a:hover {
-    color: #00bcd4;
-    transform: scale(1.05);
-}
-
-.logo {
+.logo{
     min-width: calc(50% + 1vw);
     min-height: calc(40% + 1vh);
     max-width: calc(100% + 1vw);
     max-height: calc(100% + 1vh);
-    border-radius: 50%;
-    object-fit: contain;
 }
 
-.contenedor-pefil {
+.contenedor-pefil{
     grid-column: 4;
     margin-right: 10%;
     display: grid;
     place-items: center;
 }
 
-.quienes-somos {
-    background-image: url("/img/quienes-somosBG.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    position: relative;
+.quienes-somos{
+    background-image: URL("/img/quienes-somosBG.png");
 }
-
