@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section class="paquete-completo" th:fragment="paquete-completo">
+            <div class="contenedor-home">
+                <h1 th:text="${servicio.nombre}">Nombre</h1>
+                <div class="migajas"><p th:text="'Home / ' + ${servicio.nombre}">Home / ¿Quienes Somos?</p></div>
+            </div>
+            <div class="contenedor-info">
+                <h2>Información</h2>
+                <p th:text="${servicio.descripcion}"></p>
+            </div>
+        </section>
+        
+        <section class="diseno-construccion" th:fragment="diseno-construccion">
+            <div class="contenedor-home">
+                <h1 th:text="${servicio.nombre}">Nombre</h1>
+                <div class="migajas"><p th:text="'Home / ' + ${servicio.nombre}">Home / ¿Quienes Somos?</p></div>
+            </div>
+            <div class="contenedor-info">
+                <h2>Información</h2>
+                <p th:text="${servicio.descripcion}"></p>
+            </div>
+        </section>
+        
+        <section class="solo-construccion" th:fragment="solo-construccion">
+            <div class="contenedor-home">
+                <h1 th:text="${servicio.nombre}">Nombre</h1>
+                <div class="migajas"><p th:text="'Home / ' + ${servicio.nombre}">Home / ¿Quienes Somos?</p></div>
+            </div>
+            <div class="contenedor-info">
+                <h2>Información</h2>
+                <p th:text="${servicio.descripcion}"></p>
+            </div>
+        </section>
+    </body>
+</html>

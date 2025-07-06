@@ -9,16 +9,26 @@
         <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
         <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
-        <link th:href="@{/css/estilos.css}" rel="stylesheet" type="text/css"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <link th:href="@{/css/estilo.css}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" th:href="@{/css/estilos.css}">
     </head>
     <body>
         <header th:fragment="header">
             <nav class="navegador bg-dark">
-                <a class="navbar-brand nav-logo" href="#">
+                <a class="navbar-brand nav-logo" th:href="@{/home/quienes-somos}">
                     <img src="/img/logo.png" alt="Bootstrap" class="logo">
                 </a>
                 <ul class="nav-lista">
-                    <li class="nav-it"><a href="#">Servicios</a></li>
+                    <li class="nav-it dropdown">
+                        <a href="#" class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Servicios</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" th:href="@{/servicios/paqueteCompleto/1}">Paquete Completo</a>
+                            <a class="dropdown-item" th:href="@{/servicios/soloConstruccion/2}">Solo Construcción</a>
+                            <a class="dropdown-item" th:href="@{/servicios/disenoConstruccion/3}">Diseño y Construcción</a>
+                        </div>
+                    </li>
                     <li class="nav-it"><a href="#">Contacto</a></li>
                     <li class="nav-it"><a href="#">Proyectos</a></li>
                     <li class="nav-it"><a href="#">Administrador</a></li>
@@ -29,8 +39,6 @@
                 </a>
             </nav>
         </header>
-        <section class="quienes-somos" th:fragment="quienes-somos">
-            
-        </section>
+
     </body>
 </html>

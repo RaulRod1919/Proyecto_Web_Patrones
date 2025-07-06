@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section class="quienes-somos" th:fragment="quienes-somos">
+            <div class="contenedor-home">
+                <h1>¿Quienes Somos?</h1>
+                <div class="migajas"><p>Home / ¿Quienes Somos?</p></div>
+                <a th:href="@{/home/tiposCons}"><div class="flecha-abajo">
+                        <img src="/img/punta-de-flecha-hacia-abajo.png" alt="Flecha"/>
+                    </div></a>
+            </div>
+            <div class="contenedor-info">
+                <h2>Información</h2>
+                <p th:text="${empresa.descripcion}"></p>
+            </div>
+        </section>
+
+        <section class="quines-somos tipos-cons" th:fragment="tipos-cons">
+            <div class="contenedor-home">
+                <h1>Tipos de Construcción donde nos Especializamos</h1>
+                <a th:href="@{/home/quienes-somos}"><div class="flecha-arriba">
+                        <img src="/img/punta-de-flecha-hacia-arriba.png" alt="Flecha"/>
+                    </div></a>
+                <div class="migajas"><p>Home / Tipos de Construcción</p></div>
+                <a href=""><div class="flecha-abajo">
+                        <img src="/img/punta-de-flecha-hacia-abajo.png" alt="Flecha"/>
+                    </div></a>
+            </div>
+            <div class="contenedor-info">
+                <h2>Información</h2>
+                <p th:text="${empresa.descripcion}"></p>
+            </div>
+        </section>
+    </body>
+</html>
