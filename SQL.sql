@@ -118,16 +118,18 @@ CREATE TABLE contacto (
     id_contacto INT AUTO_INCREMENT PRIMARY KEY,
     asunto VARCHAR(70) NOT NULL,
     email VARCHAR(70) NOT NULL,
-    telefono VARCHAR(20),
+    telefono INT NOT NULL,
     detalle VARCHAR(255)
 );
 
+drop table contacto;
+
 INSERT INTO empresa (descripcion, nombre) 
-VALUES ('Lorem ipsum dolor sit amet consectetur adipiscing, elit sagittis torquent primis tincidunt, vivamus iaculis dictum placerat congue. 
-                    Sociosqu vehicula varius molestie tristique dapibus rhoncus suscipit nascetur habitasse, scelerisque placerat venenatis facilisis 
-                    dis orci blandit conubia interdum, metus vulputate parturient libero netus hac consequat odio. Molestie sodales curabitur laoreet 
-                    pretium at cursus parturient, porta interdum phasellus pellentesque condimentum. Risus eleifend potenti at convallis morbi ac felis 
-                    posuere, himenaeos facilisi ut magnis proin aliquam dictumst tortor, molestie interdum nulla sem scelerisque justo quam.', 'GRS Construcciones');
+VALUES ('GRS Construcciones es una empresa comprometida con el desarrollo de proyectos de construcción de alta calidad, orientada a ofrecer soluciones innovadoras, seguras y sostenibles.Con una sólida trayectoria en el sector, nos especializamos en obras residenciales, comerciales e industriales, brindando un servicio integral que abarca desde el diseño hasta la ejecución final.
+Nuestro equipo está conformado por profesionales altamente calificados, que trabajan con pasión, responsabilidad y respeto por el entorno. En GRS Construcciones creemos en la importancia de construir más que estructuras: construimos espacios que mejoran la calidad de vida de las personas y fomentan el progreso de las comunidades.
+Nos distinguimos por nuestro compromiso con la excelencia, el cumplimiento de los plazos y el uso de materiales de primera calidad. Cada proyecto que realizamos es una muestra de nuestra dedicación y de la confianza que nuestros clientes depositan en nosotros.
+
+', 'GRS Construcciones');
                     
 INSERT INTO servicios (id_empresa, nombre, descripcion) 
 VALUES (1, 'Paquete Completo', 'Lorem ipsum dolor sit amet consectetur adipiscing, elit sagittis torquent primis tincidunt, vivamus iaculis dictum placerat congue. 
@@ -150,5 +152,9 @@ VALUES (1, 'Diseño y Construcción', 'Lorem ipsum dolor sit amet consectetur ad
                     pretium at cursus parturient, porta interdum phasellus pellentesque condimentum. Risus eleifend potenti at convallis morbi ac felis 
                     posuere, himenaeos facilisi ut magnis proin aliquam dictumst tortor, molestie interdum nulla sem scelerisque justo quam.');
 
-INSERT INTO contacto (asunto, email, telefono, detalle)
-VALUES ('Consulta general', 'cliente@ejemplo.com', '123456789', 'Quiero obtener más información sobre sus servicios.');
+
+INSERT INTO tipos_construcciones (id_empresa, nombre, descripcion) VALUES
+(1, 'Construcción Residencial', 'Desarrollo de viviendas unifamiliares y multifamiliares, ofreciendo soluciones habitacionales modernas, funcionales y seguras, adaptadas a las necesidades del cliente y las normativas locales.'),
+(1, 'Construcción Comercial', 'Diseño y edificación de locales, oficinas y centros comerciales, con énfasis en la eficiencia energética, la funcionalidad de los espacios y la estética que impulsa los negocios.'),
+(1, 'Construcción Industrial', 'Ejecución de proyectos para naves industriales, bodegas y plantas de producción, priorizando la durabilidad, la seguridad estructural y la optimización de los procesos productivos.');
+

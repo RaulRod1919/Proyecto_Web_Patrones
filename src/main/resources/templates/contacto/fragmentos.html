@@ -10,47 +10,29 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>        
-        <section class="soliciud-de-reunion" th:fragment="solicitud-de-reunion">
-            <div class="container my-5">
-                <div class="row justify-content-center">
-                    <div class="col-md-8">
-                        <div class="card shadow">
-                            <div class="card-header bg-primary text-white">
-                                <h4>Solicitud de Reunión</h4>
-                            </div>
-                            <div class="card-body">
-                                <form th:action="@{/contacto}" th:object="${contacto}" method="POST" class="was-validated">
-                                    <div class="mb-3">
-                                        <label for="asunto">Asunto</label>
-                                        <input type="text" class="form-control"
-                                               th:field="*{asunto}" required maxlength="70" placeholder="Ej. Consulta de proyecto"/>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="email">Email</label>
-                                        <input type="email" class="form-control"
-                                               th:field="*{email}" required maxlength="70" placeholder="correo@ejemplo.com"/>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="telefono">Teléfono</label>
-                                        <input type="text" class="form-control"
-                                               th:field="*{telefono}" maxlength="20" placeholder="XXXX-XXXX"/>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="detalle">Detalle</label>
-                                        <textarea class="form-control"
-                                                  th:field="*{detalle}" maxlength="255"
-                                                  rows="4" placeholder="Especifica detalles de la reunión."></textarea>
-                                    </div>
-                                    <div class="text-end">
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="fas fa-paper-plane"></i> Enviar Solicitud
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
+        <section class="contacto" th:fragment="solicitud-de-reunion">
+            <div class="contenedor-mensaje">
+                <div class="contenedor-titulo">
+                    <h2>Contacto</h2>
                 </div>
+                <div class="contenedor-medios">
+                    <p>¿Tenés consultas o reclamos? ¡Estamos para ayudarte! Podés comunicarte con GRS Construcciones por los siguientes medios:</p>
+                    <p>📞 Central telefónica: XXXX-XXXX</p>
+                    <p>📧 Correo electrónico general: XX@gmail.com</p>
+                </div>
+            </div>
+            <div class="contenedor-form-contacto">
+                <form th:action="@{/contacto/enviar}" class="form-contacto" th:object="${contacto}" method="POST">
+                    <label class="etiqueta">Asunto</label>
+                    <input type="text" class="entrada" th:field="*{asunto}">
+                    <label class="etiqueta">Email</label>
+                    <input type="email" class="entrada" required th:field="*{email}">
+                    <label class="etiqueta">Teléfono</label>
+                    <input type="tel" class="entrada" required th:field="*{telefono}">
+                    <label class="etiqueta">Detalle</label>
+                    <textarea th:field="*{detalle}" rows="4" wrap="soft"></textarea>
+                    <button type="submit" class="guardar">Enviar</button>
+                </form>
             </div>
         </section>
 

@@ -59,8 +59,7 @@ header{
     place-items: center;
 }
 
-.quienes-somos{
-    background-image: url("/img/BG.jpg");
+.quienes-somos, .tipos-cons, .paquete-completo, .diseno-construccion, .solo-construccion, .contacto{
     height: 85vh;
     width: 100%;
     background-size: cover;
@@ -70,56 +69,27 @@ header{
     grid-template-columns: 1.5fr 1fr;
     place-items: center;
 }
+.quienes-somos{
+    background-image: url("/img/BG.jpg");
+}
 
 .tipos-cons{
     background-image: url("/img/tipos-cons.jpg");
-    height: 85vh;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    place-items: center;
     color: white;
 }
 
 .paquete-completo{
     background-image: url("/img/paqueteCompleto.png");
-    height: 85vh;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    place-items: center;
     color: white;
 }
 
 .diseno-construccion{
     background-image: url("/img/disenoContruccion.png");
-    height: 85vh;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    place-items: center;
     color: white;
 }
 
 .solo-construccion{
     background-image: url("/img/soloConstruccion.png");
-    height: 85vh;
-    width: 100%;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    display: grid;
-    grid-template-columns: 1.5fr 1fr;
-    place-items: center;
     color: white;
 }
 
@@ -238,6 +208,7 @@ p{
     background-color: rgba(159, 153, 153, 1);
     padding: 1% 3%;
     margin-bottom: 3%;
+    border-radius: 10px;
 }
 
 .contenedor-radio{
@@ -261,4 +232,65 @@ p{
     border: none;
     border-radius: 999999px;
     background-color: rgba(50, 58, 75, 1);
+}
+
+.contacto{
+    background-image: url(/img/contacto.jpg);
+    color: white;
+}
+
+.contenedor-form-contacto{
+    background-color: rgba(53, 87, 160, 1);
+    width: 100%;
+    height: 100%;
+    justify-items: center;
+    align-content: center;
+    padding: 5%;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+}
+
+.form-contacto{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+textarea{
+    background-color: rgba(159, 153, 153, 1);
+    padding: 1% 3%;
+    margin-bottom: 3%;
+    border-radius: 10px;
+    border: none;
+    color: white;
+}
+
+.contenedor-mensaje{
+    justify-items: center;
+    padding: 5% 0;
+    width: 100%;
+    height: 100%;
+}
+
+.contenedor-mensaje p{
+    max-width: 90%;
+    text-align: center;
+    font-size: 150%;
+}
+
+.contenedor-medios{
+    text-align: center;
+    padding: 2%;
+    width: 100%;
+    background-color: rgba(34, 87, 202, 0.9);
+}
+
+.contenedor-titulo{
+    justify-items: center;
+    align-content: center;
+    padding: 3%;
+    width: 100%;
+    background-color: rgba(34, 87, 202, 1);
+    margin-bottom: 4%;
+    margin-top: 5%;
 }

@@ -7,6 +7,7 @@ import java.util.List;
  * @author Raul
  */
 public interface ContactoService {
-    public Contacto getContacto();
+    
+    public void save(Contacto contacto);
     
 }

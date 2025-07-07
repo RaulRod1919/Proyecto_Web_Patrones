@@ -18,14 +18,13 @@ public class Contacto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_contacto")
-    private Integer idContacto;
+    private Long idContacto;
     private String asunto;
     private String email;
-    private String telefono;
+    private int telefono;
     private String detalle;
 
-    public Contacto(Integer idContacto, String asunto, String email, String telefono, String detalle) {
-        this.idContacto = idContacto;
+    public Contacto(String asunto, String email, int telefono, String detalle) {
         this.asunto = asunto;
         this.email = email;
         this.telefono = telefono;

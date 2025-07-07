@@ -20,8 +20,10 @@ public class ContactoServiceImpl implements ContactoService{
     private ContactoDao contactoDao;
 
     @Override
-    @Transactional(readOnly = true)
-    public Contacto getContacto() {
-        return contactoDao.findById(1L).orElse(null);
+    @Transactional
+    public void save(Contacto contacto) {
+        contactoDao.save(contacto);
     }
+    
+    
 }

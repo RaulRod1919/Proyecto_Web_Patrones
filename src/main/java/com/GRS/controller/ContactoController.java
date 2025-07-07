@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -24,10 +25,16 @@ public class ContactoController {
     @Autowired
     private ContactoService contactoService;
 
-    @GetMapping("/contacto")
+    @GetMapping("/solicitudReunion")
     public String mostrarFormulario(Model model) {
         model.addAttribute("contacto", new Contacto());
-        return "contacto";
+        return "/contacto/solicitudReunion";
+    }
+    
+    @PostMapping("/enviar")
+    public String enviar(Contacto contacto){
+        contactoService.save(contacto);
+        return "redirect:/contacto/solicitudReunion";
     }
 
 }
