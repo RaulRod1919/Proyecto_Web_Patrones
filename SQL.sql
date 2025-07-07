@@ -115,10 +115,10 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE contacto (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_contacto INT AUTO_INCREMENT PRIMARY KEY,
     asunto VARCHAR(70) NOT NULL,
-    email VARCHAR(70) NOT NULL,
-    telefono VARCHAR(20),
+    email_contacto VARCHAR(70) NOT NULL,
+    telefono_contacto VARCHAR(20),
     detalle VARCHAR(255)
 );
 
