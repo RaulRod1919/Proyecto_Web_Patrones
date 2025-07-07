@@ -114,6 +114,14 @@ CREATE TABLE imagenes_proyectos (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
+CREATE TABLE contacto (
+    id_contacto INT AUTO_INCREMENT PRIMARY KEY,
+    asunto VARCHAR(70) NOT NULL,
+    email VARCHAR(70) NOT NULL,
+    telefono VARCHAR(20),
+    detalle VARCHAR(255)
+);
+
 INSERT INTO empresa (descripcion, nombre) 
 VALUES ('Lorem ipsum dolor sit amet consectetur adipiscing, elit sagittis torquent primis tincidunt, vivamus iaculis dictum placerat congue. 
                     Sociosqu vehicula varius molestie tristique dapibus rhoncus suscipit nascetur habitasse, scelerisque placerat venenatis facilisis 
@@ -141,3 +149,6 @@ VALUES (1, 'Diseño y Construcción', 'Lorem ipsum dolor sit amet consectetur ad
                     dis orci blandit conubia interdum, metus vulputate parturient libero netus hac consequat odio. Molestie sodales curabitur laoreet 
                     pretium at cursus parturient, porta interdum phasellus pellentesque condimentum. Risus eleifend potenti at convallis morbi ac felis 
                     posuere, himenaeos facilisi ut magnis proin aliquam dictumst tortor, molestie interdum nulla sem scelerisque justo quam.');
+
+INSERT INTO contacto (asunto, email, telefono, detalle)
+VALUES ('Consulta general', 'cliente@ejemplo.com', '123456789', 'Quiero obtener más información sobre sus servicios.');
