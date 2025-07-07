@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  *
@@ -27,9 +28,16 @@ public class AdministradorController {
     }
     
     @PostMapping("/actualizar")
-    public String usuarioModificar(Usuarios usuario){
-        usuario = usuarioService.getUsuarios(usuario);
-        usuarioService.save(usuario);
-        return "redirect:/administrador/gestionUsuarios";
+    public String usuarioModificar(Usuarios usuario, RedirectAttributes redirectAttributes){
+        Usuarios user = usuarioService.getUsuariosPorCorreo(usuario.getCorreo());
+        if(user != null){
+            user.setRol(usuario.getRol());
+            usuarioService.save(usuario);
+            redirectAttributes.addFlashAttribute("mensaje", "Usuario actualizado correctamente.");
+            return "redirect:/administrador/gestionUsuarios";
+        }else{
+            redirectAttributes.addFlashAttribute("error", "El usuario con el correo '" + usuario.getCorreo() + "' no existe.");
+            return "redirect:/administrador/gestionUsuarios";
+        }
     }
 }
