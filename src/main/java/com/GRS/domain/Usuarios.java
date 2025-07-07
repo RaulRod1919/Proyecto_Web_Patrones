@@ -26,4 +26,27 @@ public class Usuarios implements Serializable {
 
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Telefonos> telefonos;
+
+    public Usuarios() {
+    }
+
+    // Este constructor es para crear el User y asignarle los telefonos de una vez
+    public Usuarios(String correo, String nombre, String password, String rol, List<Telefonos> telefonos) {
+        this.correo = correo;
+        this.nombre = nombre;
+        this.password = password;
+        this.rol = rol;
+        this.telefonos = telefonos;
+    }
+
+    // Este constructor para cuando agregamos los telefonos despues
+    public Usuarios(String correo, String nombre, String password, String rol) {
+        this.correo = correo;
+        this.nombre = nombre;
+        this.password = password;
+        this.rol = rol;
+    }
+
+
+
 }

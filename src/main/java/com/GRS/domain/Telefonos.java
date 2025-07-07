@@ -20,4 +20,14 @@ public class Telefonos implements Serializable {
     @ManyToOne
     @JoinColumn(name = "correo", referencedColumnName = "correo")
     private Usuarios usuario;
+
+    public Telefonos() {
+    }
+
+    public Telefonos(String nombre, Usuarios usuario) {
+        this.nombre = nombre;
+        this.usuario = usuario;
+    }
+
+
 }

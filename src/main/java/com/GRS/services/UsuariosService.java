@@ -20,6 +20,6 @@ public interface UsuariosService {
     // Se elimina el Usuario que tiene el id pasado por parámetro
     public void delete(Usuarios usuarios);
 
-
+    public Usuarios getUsuariosPorCorreo(String correo);
 
 }
