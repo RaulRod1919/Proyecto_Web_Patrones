@@ -6,6 +6,7 @@ package com.GRS.controller;
 import com.GRS.domain.Empresa;
 import com.GRS.dao.EmpresaDao;
 import com.GRS.services.EmpresaService;
+import com.GRS.services.TiposConstruccionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ public class EmpresaController {
     @Autowired
     private EmpresaService empresaService;
     
+    @Autowired
+    private TiposConstruccionService tiposConstruccionService;
+    
     @GetMapping("/quienes-somos")
     public String getinicio(Model model){
         model.addAttribute("empresa", empresaService.getEmpresa());
@@ -31,6 +35,7 @@ public class EmpresaController {
     @GetMapping("/tiposCons")
     public String getTiposContruccion(Model model){
         model.addAttribute("empresa", empresaService.getEmpresa());
+        model.addAttribute("tiposConstrucciones", tiposConstruccionService.getTiposConstruccion());
         return "home/tiposCons";
     }
     
