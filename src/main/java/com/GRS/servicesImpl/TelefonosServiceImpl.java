@@ -19,24 +19,23 @@ public class TelefonosServiceImpl implements TelefonosService {
     @Transactional(readOnly = true)
     public List<Telefonos> getTelefonos(boolean activos) {
         var lista = telefonosDao.findAll();
-        if (activos) {
-            
-        }
         return lista;
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Telefonos getTelefonos(Telefonos telefonos) {
-        return null;
+        return telefonosDao.findById(telefonos.getIdTelefono()).orElse(null);
     }
 
     @Override
+    @Transactional
     public void save(Telefonos telefonos) {
-
+        telefonosDao.save(telefonos);
     }
 
     @Override
     public void delete(Telefonos telefonos) {
-
+        telefonosDao.delete(telefonos);
     }
 }

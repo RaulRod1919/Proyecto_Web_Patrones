@@ -16,7 +16,7 @@
     <body>
         <header th:fragment="header">
             <nav class="navegador bg-dark">
-                <a class="navbar-brand nav-logo" th:href="@{/home/quienes-somos}">
+                <a class="navbar-brand nav-logo" th:href="@{/}">
                     <img src="/img/logo.png" alt="Bootstrap" class="logo">
                 </a>
                 <ul class="nav-lista">
@@ -40,14 +40,13 @@
 
                     </li>
                     <li class="nav-it"><a href="#">Proyectos</a></li>
-                    <li class="nav-it"><a href="#">Administrador</a></li>
+                    <li class="nav-it"><a th:href="@{/administrador/gestionUsuarios}">Administrador</a></li>
                     <li class="nav-it"><a href="#">Ingeniero</a></li>
                 </ul>
-                <a href="#" class="contenedor-pefil">  
-                    <img src="/img/gente.png" >
+                <a th:href="@{/inicio-sesion}" class="contenedor-pefil">
+                    <img src="/img/gente.png">
                 </a>
             </nav>
         </header>
-
     </body>
 </html>

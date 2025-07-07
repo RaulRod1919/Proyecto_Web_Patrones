@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section class="gestion" th:fragment="gestion-usuario">
+            <div class="contenedor-form-gestion">
+                <div th:replace="~{administrador/fragmentos :: mensajes}"></div>
+                <form th:action="@{/administrador/actualizar}" class="form-gestion" th:object="${usuario}" method="POST">
+                    <label class="etiqueta">Nombre de la Cuenta</label>
+                    <input type="text" class="entrada" th:field="*{nombre}">
+                    <label class="etiqueta">Correo de la Cuenta</label>
+                    <input type="email" class="entrada" required th:field="*{correo}">
+                    <label class="etiqueta">Contraseña de la Cuenta</label>
+                    <input type="password" class="entrada" required th:field="*{password}">
+                    <label class="etiqueta">Rol de la Cuenta</label>
+                    <div class="contenedor-radio">
+                        <div>
+                            <input type="radio" th:value="Administrador" class="radio" th:field="*{rol}" required>
+                            <label class="etiqueta">Administrador</label>
+                        </div>
+                        <div>
+                            <input type="radio" th:value="Ingeniero" class="radio" th:field="*{rol}" required>
+                            <label class="etiqueta">Ingeniero</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="guardar">Guardar</button>
+                </form>
+            </div>
+        </section>
+        
+        <div th:fragment="mensajes">
+            <div th:if="${error}" class="alert alert-danger" role="alert">
+                <p th:text="${error}"></p>
+            </div>
+
+            <div th:if="${mensaje}" class="alert alert-success" role="alert">
+                <p th:text="${mensaje}"></p>
+            </div>
+        </div>
+    </body>
+</html>

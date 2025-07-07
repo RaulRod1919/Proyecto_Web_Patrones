@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org./1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout/plantilla :: head}">
     <meta charset="UTF-8">
@@ -29,18 +29,32 @@
                     </span>
                     <input type="text" class="form-control" name="nombre" placeholder="Nombre de Usuario" required>
                 </div>
+
                 <div class="mb-3 input-group">
                     <span class="input-group-text">
                         <img src="/img/email.png" alt="email" width="20">
                     </span>
                     <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>
+
                 <div class="mb-3 input-group">
                     <span class="input-group-text">
                         <img src="/img/lock.png" alt="password" width="20">
                     </span>
                     <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
                 </div>
+
+                <!-- Campo adicional para el teléfono -->
+                <div class="mb-3 input-group">
+                    <span class="input-group-text">
+                        <img src="/img/phone.png" alt="Teléfono" width="20">
+                    </span>
+                    <input type="text" class="form-control" name="telefono" placeholder="Teléfono" required>
+                </div>
+
+                <!-- Campo oculto para rol -->
+                <input type="hidden" name="rol" value="USER">
+
                 <button type="submit" class="btn btn-registrar w-100">Registrarse</button>
             </form>
         </div>

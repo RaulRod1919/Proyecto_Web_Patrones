@@ -26,8 +26,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <section class="quines-somos tipos-cons" th:fragment="tipos-cons">
             <div class="contenedor-home">
-                <h1>Tipos de Construcción donde nos Especializamos</h1>
-                <a th:href="@{/home/quienes-somos}"><div class="flecha-arriba">
+                <h1>Tipos de Construcción que Realizamos</h1>
+                <a th:href="@{/}"><div class="flecha-arriba">
                         <img src="/img/punta-de-flecha-hacia-arriba.png" alt="Flecha"/>
                     </div></a>
                 <div class="migajas"><p>Home / Tipos de Construcción</p></div>
@@ -37,7 +37,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>
             <div class="contenedor-info">
                 <h2>Información</h2>
-                <p th:text="${empresa.descripcion}"></p>
+                <div>
+                    <p th:each="tipoConstruccion : ${tiposConstrucciones}" 
+                       th:text="${tipoConstruccion.nombre} + ': ' + ${tipoConstruccion.descripcion}"></p>
+                </div>
             </div>
         </section>
     </body>

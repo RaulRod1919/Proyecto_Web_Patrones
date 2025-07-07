@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org./1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{layout/plantilla :: head}">
     <meta charset="UTF-8">
@@ -21,15 +21,20 @@
                 <img src="/img/facebook.png" alt="Facebook" class="icono">
             </div>
 
+            <!-- Mensaje de error -->
+            <div th:if="${error}" class="alert alert-danger" role="alert">
+                <p th:text="${error}"></p>
+            </div>
+
             <p class="text-muted">Use su correo y contraseña</p>
 
             <!-- Formulario -->
-            <form th:action="@{/login}" method="post">
+            <form th:action="@{/iniciar-sesion}" method="post">
                 <div class="mb-3 input-group">
                     <span class="input-group-text">
                         <img src="/img/email.png" alt="email" width="20">
                     </span>
-                    <input type="email" class="form-control" placeholder="Email" name="username" required>
+                    <input type="email" class="form-control" placeholder="Email" name="correo" required>
                 </div>
                 <div class="mb-2 input-group">
                     <span class="input-group-text">
