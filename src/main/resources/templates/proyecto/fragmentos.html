@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head th:replace="~{layout/plantilla : head}">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <section th:fragment="formulario" class="contenedor-panel">
+            <div class="form-cont">
+                <form action="" method="">
+                    <input type="number" class="entrada-ing" placeholder="Buscar por ID de Proyecto">
+                    <div class="fechas-cont">
+                        <div>
+                            <label class="etiqueta">Inicio</label><br>
+                            <input type="date" class="entrada-ing" placeholder="Buscar por ID de Proyecto">
+                        </div>
+                        <div>
+                            <label class="etiqueta">Cierre</label><br>
+                            <input type="date" class="entrada-ing" placeholder="Buscar por ID de Proyecto">
+                        </div>
+                    </div>
+                    <input type="text" class="entrada-ing" placeholder="Buscar por Solicitante">
+                    <label class="etiqueta">ESTADO</label>
+                    <div>
+                        <input type="radio" name="estado" value="Planificacion">
+                        <label class="etiqueta">Planificacion</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="estado" value="En Progreso">
+                        <label class="etiqueta">En Progreso</label>
+                    </div>
+                    <div>
+                        <input type="radio" name="estado" value="Finalizado">
+                        <label class="etiqueta">Finalizado</label>
+                    </div>
+                    <button class="btn-panel">Filtrar</button>
+                </form>
+            </div>
+            <div class="cont-tabla">
+                <div class="actions">
+                    <p>ACCIONES</p>
+                    <button type="button" class="btn-panel btn-crud"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#crearProyecto">Crear</button>
+                </div>
+                <table class="tabla">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Inicio</th>
+                            <th>Cierre</th>
+                            <th>Presupuesto</th>
+                            <th>Solicitante</th>
+                            <th>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="proyecto : ${proyectos}" class="tr">
+                            <td th:text="${proyecto.idProyecto}">Id</td>
+                            <td th:text="${proyecto.nombre}">Nombre</td>
+                            <td th:text="${proyecto.fechaInicio}">Inicio</td>
+                            <td th:text="${proyecto.fechaCierre}">Cierre</td>
+                            <td th:text="${proyecto.presupuesto}">Presupuesto</td>
+                            <td th:text="${proyecto.usuario.nombre}">Solicitante</td>
+                            <td th:text="${proyecto.estado}">Estado</td>
+                            <td><a th:href="@{/proyecto/eliminar/}+${proyecto.idProyecto}" class="btn btn-danger">
+                                    <i class="fas fa-trash"></i></a>
+                                <a th:href="@{/proyecto/editar/}+${proyecto.idProyecto}"
+                                   class="btn btn-success">
+                                    <i class="fas fa-pencil"></i></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section th:fragment="modal">
+            <div id="crearProyecto" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">Agregar un Nuevo Proyecto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:action="@{/proyecto/guardar}" th:object="${proyecto}"
+                              method="POST" class="was-validated" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="descripcion">Nombre</label>
+                                    <input type="text" class="form-control" required="true" th:field="*{nombre}"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="activo">Presupuesto</label>
+                                    <input class="form-control" type="number" step="0.01" required="true" th:field="*{presupuesto}"/>
+                                </div>
+                                <div class="fechas-cont">
+                                    <div>
+                                        <label class="etiqueta">Inicio</label><br>
+                                        <input type="date" class="form-control" required="true" th:field="*{fechaInicio}">
+                                    </div>
+                                    <div>
+                                        <label class="etiqueta">Cierre</label><br>
+                                        <input type="date" class="form-control" required="true" th:field="*{fechaCierre}">
+                                    </div>
+                                </div>
+                                <label class="etiqueta">Estado</label>
+                                <div>
+                                    <input type="radio" name="estado" value="Planificacion" required th:field="*{estado}">
+                                    <label class="etiqueta">Planificacion</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="estado" value="En Progreso" required th:field="*{estado}">
+                                    <label class="etiqueta">En Progreso</label>
+                                </div>
+                                <div>
+                                    <input type="radio" name="estado" value="Finalizado" required th:field="*{estado}">
+                                    <label class="etiqueta">Finalizado</label>
+                                </div>
+                                <label for="customRange2" class="form-label">Progreso: 
+                                    <span id="rangeValue">0%</span>
+                                </label>
+                                <input type="range" class="form-range" min="0" max="100" id="customRange2" value="0" 
+                                       oninput="document.getElementById('rangeValue').textContent = this.value + '%'" th:field="*{progreso}">
+                                <label class="etiqueta">Usuario</label>
+                                <input type="email" class="form-control" name="correo" th:field="*{usuario.correo}" required placeholder="Correo"/>
+                                <label class="etiqueta">Servicios</label>
+                                <select class="form-select" th:field="*{servicio}" required>
+                                    <option value="">Seleccione un servicio</option>
+                                    <option th:each="servicio : ${servicios}"
+                                            th:value="${servicio.idServicio}"
+                                            th:text="${servicio.nombre}">
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn btn-primary" type="submit">Guardar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div th:fragment="mensajes">
+            <div th:if="${error}" 
+                 class="alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 z-3" 
+                 role="alert" 
+                 style="max-width: 600px; z-index: 1055;">
+                <p class="m-0" th:text="${error}"></p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+        <section th:fragment="editarProyecto">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/proyecto/guardar}" 
+                          th:object="${proyecto}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" th:field="*{idProyecto}"/>
+                        <section th:replace="~{proyecto/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="mb-3">
+                                                <label for="descripcion">Nombre</label>
+                                                <input type="text" class="form-control" required="true" th:field="*{nombre}"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="activo">Presupuesto</label>
+                                                <input class="form-control" type="number" step="0.01" required="true" th:field="*{presupuesto}"/>
+                                            </div>
+                                            <div class="fechas-cont">
+                                                <div>
+                                                    <label class="etiqueta">Inicio</label><br>
+                                                    <input type="date" class="form-control" required="true" th:field="*{fechaInicio}">
+                                                </div>
+                                                <div>
+                                                    <label class="etiqueta">Cierre</label><br>
+                                                    <input type="date" class="form-control" required="true" th:field="*{fechaCierre}">
+                                                </div>
+                                            </div>
+                                            <label class="etiqueta">Estado</label>
+                                            <div>
+                                                <input type="radio" name="estado" value="Planificacion" required th:field="*{estado}">
+                                                <label class="etiqueta">Planificacion</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" name="estado" value="En Progreso" required th:field="*{estado}">
+                                                <label class="etiqueta">En Progreso</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" name="estado" value="Finalizado" required th:field="*{estado}">
+                                                <label class="etiqueta">Finalizado</label>
+                                            </div>
+                                            <label for="customRange2" class="form-label">
+                                                Progreso: <span id="rangeValue" th:text="${proyecto.progreso + '%'}">%</span>
+                                            </label>
+                                            <input type="range"
+                                                   class="form-range"
+                                                   min="0"
+                                                   max="100"
+                                                   id="customRange2"
+                                                   th:field="*{progreso}"
+                                                   oninput="document.getElementById('rangeValue').textContent = this.value + '%'">
+                                            <label class="etiqueta">Usuario</label>
+                                            <input type="email" class="form-control" name="correo" th:field="*{usuario.correo}" required placeholder="Correo"/>
+                                            <label class="etiqueta">Servicios</label>
+                                            <select class="form-select" th:field="*{servicio}" required>
+                                                <option value="">Seleccione un servicio</option>
+                                                <option th:each="servicio : ${servicios}"
+                                                        th:value="${servicio.idServicio}"
+                                                        th:text="${servicio.nombre}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section th:fragment="botonesEditar">
+            <div class="container py-4 mb-4 bg-light">
+                <div class="row">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/proyecto/panel}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
