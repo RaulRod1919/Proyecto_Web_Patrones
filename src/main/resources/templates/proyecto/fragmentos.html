@@ -17,11 +17,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="fechas-cont">
                         <div>
                             <label class="etiqueta">Inicio</label><br>
-                            <input type="date" class="entrada-ing select" th:value="${fechaInicio}">
+                            <input type="date" name='fechaInicio' class="entrada-ing select" th:value="${fechaInicio}">
                         </div>
                         <div>
                             <label class="etiqueta">Cierre</label><br>
-                            <input type="date" class="entrada-ing select" th:value="${fechaCierre}">
+                            <input type="date" name="fechaCierre" class="entrada-ing select" th:value="${fechaCierre}">
                         </div>
                     </div>
                     <input type="email" class="entrada-ing select" placeholder="Buscar por Correo de Solicitante" name="correo" th:value="${correo}">

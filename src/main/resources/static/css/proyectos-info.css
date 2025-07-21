@@ -1,0 +1,50 @@
+/* ---- Vista Proyectos ---- */
+.vista-proyectos {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 4rem 5%;
+    background-image: url('/img/fondo-proyecto.png'); /* tu imagen */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.lado-izquierdo {
+    color: #fff;
+    max-width: 50%;
+    text-shadow: 0 2px 8px rgba(0,0,0,.45);
+}
+
+.titulo {
+    line-height: 1.1;
+    letter-spacing: .5px;
+}
+
+.panel {
+    background: rgba(22,26,32,.72);
+    border-radius: 16px;
+    padding: 28px;
+    width: 40%;
+    max-width: 520px;
+    backdrop-filter: blur(2px);
+}
+
+.btn-proyecto {
+    border-radius: 10px;
+    padding: .9rem 1.1rem;
+    font-weight: 600;
+}
+
+/* Responsivo */
+@media (max-width: 992px) {
+    .vista-proyectos {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 3rem 6%;
+    }
+    .lado-izquierdo { max-width: 100%; }
+    .panel { width: 100%; }
+}

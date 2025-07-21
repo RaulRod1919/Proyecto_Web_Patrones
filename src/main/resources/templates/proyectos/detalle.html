@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/plantilla :: head}">
+</head>
+<body>
+<header th:replace="~{layout/plantilla :: header}"></header>
+
+<div class="detalle-container">
+    <div class="detalle-izquierda">
+        <h1>Información del Proyecto</h1>
+        <p><strong>Nombre:</strong> <span th:text="${proyecto.nombre}"></span></p>
+        <p><strong>Servicio:</strong> <span th:text="${proyecto.servicio.nombre}"></span></p>
+        <p><strong>Usuario:</strong> <span th:text="${proyecto.usuario.correo}"></span></p>
+        <p><strong>Presupuesto:</strong> ₡<span th:text="${proyecto.presupuesto}"></span></p>
+        <p><strong>Fecha de Inicio:</strong> <span th:text="${#dates.format(proyecto.fechaInicio, 'dd/MM/yyyy')}"></span></p>
+        <p><strong>Fecha de Cierre:</strong> <span th:text="${#dates.format(proyecto.fechaCierre, 'dd/MM/yyyy')}"></span></p>
+        <p><strong>Estado:</strong> <span th:text="${proyecto.estado}"></span></p>
+    </div>
+
+    <div class="detalle-derecha">
+        <h2>Progreso del Proyecto</h2>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" th:style="'width:' + ${proyecto.progreso} + '%'"
+                 th:text="${proyecto.progreso} + '%'" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

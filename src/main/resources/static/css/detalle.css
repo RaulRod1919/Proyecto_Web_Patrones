@@ -1,0 +1,71 @@
+/* Fondo general */
+body {
+    background-image: url('/img/estructura.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    backdrop-filter: brightness(0.6);
+}
+
+/* Contenedor principal */
+.detalle-container {
+    background-color: rgba(0, 0, 0, 0.65);
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 800px;
+    margin: 5rem auto;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+/* Título */
+.detalle-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: 2px solid #0d6efd;
+    padding-bottom: 0.5rem;
+}
+
+/* Etiquetas */
+.detalle-label {
+    font-weight: 500;
+    color: #adb5bd;
+}
+
+/* Valores */
+.detalle-valor {
+    font-weight: 400;
+    color: #ffffff;
+    margin-bottom: 1rem;
+}
+
+/* Progreso */
+.progress {
+    height: 1.5rem;
+    border-radius: 1rem;
+    background-color: #343a40;
+    overflow: hidden;
+    margin-top: 0.5rem;
+}
+
+.progress-bar {
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .detalle-container {
+        padding: 1.5rem;
+        margin: 3rem 1rem;
+    }
+
+    .detalle-container h1 {
+        font-size: 2rem;
+    }
+}
