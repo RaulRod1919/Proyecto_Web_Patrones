@@ -12,33 +12,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <section th:fragment="formulario" class="contenedor-panel">
             <div class="form-cont">
-                <form action="" method="">
-                    <input type="number" class="entrada-ing" placeholder="Buscar por ID de Proyecto">
+                <form th:action="@{/proyecto/filtro}" method="POST">
+                    <input type="number" name="idProyecto" class="entrada-ing select" placeholder="Buscar por ID de Proyecto" th:value="${idProyecto}">
                     <div class="fechas-cont">
                         <div>
                             <label class="etiqueta">Inicio</label><br>
-                            <input type="date" class="entrada-ing" placeholder="Buscar por ID de Proyecto">
+                            <input type="date" class="entrada-ing select" th:value="${fechaInicio}">
                         </div>
                         <div>
                             <label class="etiqueta">Cierre</label><br>
-                            <input type="date" class="entrada-ing" placeholder="Buscar por ID de Proyecto">
+                            <input type="date" class="entrada-ing select" th:value="${fechaCierre}">
                         </div>
                     </div>
-                    <input type="text" class="entrada-ing" placeholder="Buscar por Solicitante">
+                    <input type="email" class="entrada-ing select" placeholder="Buscar por Correo de Solicitante" name="correo" th:value="${correo}">
                     <label class="etiqueta">ESTADO</label>
                     <div>
-                        <input type="radio" name="estado" value="Planificacion">
-                        <label class="etiqueta">Planificacion</label>
+                        <input type="radio" name="estado" th:value="${'Planificacion'}" class="select">
+                        <label class="etiqueta">Planificación</label>
                     </div>
                     <div>
-                        <input type="radio" name="estado" value="En Progreso">
+                        <input type="radio" name="estado" th:value="${'En Progreso'}" class="select">
                         <label class="etiqueta">En Progreso</label>
                     </div>
                     <div>
-                        <input type="radio" name="estado" value="Finalizado">
+                        <input type="radio" name="estado" th:value="${'Finalizado'}" class="select">
                         <label class="etiqueta">Finalizado</label>
                     </div>
-                    <button class="btn-panel">Filtrar</button>
+                    <button class="btn-panel" type="submit" id="filtro">Filtrar</button>
                 </form>
             </div>
             <div class="cont-tabla">

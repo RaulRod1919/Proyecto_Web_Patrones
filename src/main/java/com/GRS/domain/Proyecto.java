@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 import com.GRS.domain.Servicios;
 import java.io.Serializable;
+import java.time.LocalDate;
 
 /**
  *
@@ -39,9 +40,9 @@ public class Proyecto implements Serializable {
     private String nombre;
     private float presupuesto;
     @Column(name = "fecha_inicio")
-    private String fechaInicio;
+    private LocalDate fechaInicio;
     @Column(name = "fecha_cierre")
-    private String fechaCierre;
+    private LocalDate fechaCierre;
     private String estado;
     private int progreso;
     @ManyToOne
@@ -51,7 +52,7 @@ public class Proyecto implements Serializable {
     @JoinColumn(name="correo", updatable=false)
     private Usuarios usuario;
 
-    public Proyecto(String nombre, float presupuesto, String fechaInicio, String fechaCierre, String estado, int progreso) {
+    public Proyecto(String nombre, float presupuesto, LocalDate fechaInicio, LocalDate fechaCierre, String estado, int progreso) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;
         this.fechaInicio = fechaInicio;
