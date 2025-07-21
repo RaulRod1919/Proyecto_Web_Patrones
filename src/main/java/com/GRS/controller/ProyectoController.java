@@ -76,6 +76,7 @@ public class ProyectoController {
         model.addAttribute("proyectos", proyectoService.findByIdProyectoOrFechaInicioOrFechaCierreOrUsuarioOrEstado(
                 idProyecto, fechaInicio, fechaCierre, user, estado));
         model.addAttribute("proyecto", new Proyecto());
+        model.addAttribute("servicios", servicioService.getServicios());
         return "/proyecto/panel";
     }
 }
