@@ -44,14 +44,6 @@
                     <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
                 </div>
 
-                <!-- Campo adicional para el teléfono -->
-                <div class="mb-3 input-group">
-                    <span class="input-group-text">
-                        <img src="/img/phone.png" alt="Teléfono" width="20">
-                    </span>
-                    <input type="text" class="form-control" name="telefono" placeholder="Teléfono" required>
-                </div>
-
                 <!-- Campo oculto para rol -->
                 <input type="hidden" name="rol" value="USER">
 
@@ -63,7 +55,7 @@
         <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
             <h2 class="fw-bold mb-3">¡Bienvenido!</h2>
             <p class="mb-4">Ingrese sus datos personales para todas las funciones del sitio.</p>
-            <a th:href="@{/inicio-sesion}" class="btn btn-outline-light rounded-pill px-4">Iniciar Sesión</a>
+            <a th:href="@{/login}" class="btn btn-outline-light rounded-pill px-4">Iniciar Sesión</a>
         </div>
     </div>
 </div>

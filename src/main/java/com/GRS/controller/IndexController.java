@@ -21,12 +21,6 @@ public class IndexController {
         return "index"; // debe estar en: src/main/resources/templates/index.html
     }
 
-    // Página de inicio de sesión
-    @GetMapping("/inicio-sesion")
-    public String mostrarInicioSesion() {
-        return "home/inicio_sesion"; // debe estar en: templates/home/inicio_sesion.html
-    }
-
     // Página de registro (si la querés desde aquí también)
     @GetMapping("/registrarse")
     public String mostrarRegistro() {

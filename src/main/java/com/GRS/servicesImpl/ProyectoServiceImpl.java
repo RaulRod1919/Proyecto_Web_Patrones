@@ -54,5 +54,10 @@ public class ProyectoServiceImpl implements ProyectoService{
     public List<Proyecto> findByIdProyectoOrFechaInicioOrFechaCierreOrUsuarioOrEstado(Long idProyecto, LocalDate fechaInicio, LocalDate fechaCierre, Usuarios usuario, String estado) {
         return proyectoDao.findByIdProyectoOrFechaInicioOrFechaCierreOrUsuarioOrEstado(idProyecto, fechaInicio, fechaCierre, usuario, estado);
     }
+
+    @Override
+    public List<Proyecto> findByUsuario(Usuarios usuario) {
+        return proyectoDao.findByUsuario(usuario);
+    }
     
 }

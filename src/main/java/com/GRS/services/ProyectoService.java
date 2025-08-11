@@ -23,4 +23,6 @@ public interface ProyectoService {
     public List<Proyecto> findByIdProyectoOrFechaInicioOrFechaCierreOrUsuarioOrEstado(Long idProyecto,
             LocalDate fechaInicio, LocalDate fechaCierre, Usuarios usuario, String estado);
     
+    public List<Proyecto> findByUsuario(Usuarios usuario);
+    
 }

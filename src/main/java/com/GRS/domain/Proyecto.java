@@ -2,9 +2,11 @@ package com.GRS.domain;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import com.GRS.domain.Servicios;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 /**
  *
@@ -38,9 +40,12 @@ public class Proyecto implements Serializable {
     @Column(name = "id_proyecto")
     private Long idProyecto;
     private String nombre;
-    private float presupuesto;
+    @NumberFormat(pattern="#,##0.00")
+    private BigDecimal presupuesto;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "fecha_inicio")
     private LocalDate fechaInicio;
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     @Column(name = "fecha_cierre")
     private LocalDate fechaCierre;
     private String estado;
@@ -52,7 +57,7 @@ public class Proyecto implements Serializable {
     @JoinColumn(name="correo", updatable=false)
     private Usuarios usuario;
 
-    public Proyecto(String nombre, float presupuesto, LocalDate fechaInicio, LocalDate fechaCierre, String estado, int progreso) {
+    public Proyecto(String nombre, BigDecimal presupuesto, LocalDate fechaInicio, LocalDate fechaCierre, String estado, int progreso) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;
         this.fechaInicio = fechaInicio;

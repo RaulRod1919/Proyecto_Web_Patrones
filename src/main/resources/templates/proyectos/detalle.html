@@ -11,9 +11,9 @@
         <p><strong>Nombre:</strong> <span th:text="${proyecto.nombre}"></span></p>
         <p><strong>Servicio:</strong> <span th:text="${proyecto.servicio.nombre}"></span></p>
         <p><strong>Usuario:</strong> <span th:text="${proyecto.usuario.correo}"></span></p>
-        <p><strong>Presupuesto:</strong> ₡<span th:text="${proyecto.presupuesto}"></span></p>
-        <p><strong>Fecha de Inicio:</strong> <span th:text="${#dates.format(proyecto.fechaInicio, 'dd/MM/yyyy')}"></span></p>
-        <p><strong>Fecha de Cierre:</strong> <span th:text="${#dates.format(proyecto.fechaCierre, 'dd/MM/yyyy')}"></span></p>
+        <p><strong>Presupuesto:</strong> ₡<span th:text="${#numbers.formatDecimal(proyecto.presupuesto,0,'COMMA',2,'POINT')}"></span></p>
+        <p><strong>Fecha de Inicio:</strong> <span th:text="${proyecto.fechaInicio}"></span></p>
+        <p><strong>Fecha de Cierre:</strong> <span th:text="${proyecto.fechaCierre}"></span></p>
         <p><strong>Estado:</strong> <span th:text="${proyecto.estado}"></span></p>
     </div>
 
