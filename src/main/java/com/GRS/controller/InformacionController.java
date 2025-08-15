@@ -1,8 +1,10 @@
 package com.GRS.controller;
 
 import com.GRS.domain.Proyecto;
+import com.GRS.domain.Usuarios;
 import com.GRS.services.ProyectoService;
 import com.GRS.services.UsuariosService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,9 +24,10 @@ public class InformacionController {
     @Autowired
     private UsuariosService usuarioService;
 
-    @GetMapping("/informacion/{correo}")
-    public String mostrarProyectos(Model model, @PathVariable("correo") String correo) {
-        model.addAttribute("proyectos", proyectoService.findByUsuario(usuarioService.getUsuariosPorCorreo(correo)));
+    @GetMapping("/informacion")
+    public String mostrarProyectos(Model model, HttpSession session) {
+        Usuarios user = (Usuarios)session.getAttribute("usuario");
+        model.addAttribute("proyectos", proyectoService.findByUsuario(user));
         return "proyectos/informacion"; // apunta a: templates/proyectos/informacion.html
     }
 

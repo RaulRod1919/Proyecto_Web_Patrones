@@ -1,13 +1,13 @@
 package com.GRS.services;
 
-import com.GRS.domain.Contacto;
-import java.util.List;
+import jakarta.mail.MessagingException;
+
 /**
  *
  * @author Raul
  */
 public interface ContactoService {
     
-    public void save(Contacto contacto);
+    public void enviarCorreo(String asunto, String correo, String detalle) throws MessagingException;
     
 }

@@ -48,7 +48,7 @@
                             Proyectos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="proyectosDropdown">
-                            <a class="dropdown-item" th:href="@{/proyectos/informacion/} + ${session.usuario.correo}">Información General</a>
+                            <a class="dropdown-item" th:href="@{/proyectos/informacion}">Información General</a>
                         </div>
                     </li>
                     <li class="nav-it"><a th:href="@{/administrador/gestionUsuarios}" sec:authorize="hasRole('ROLE_ADMIN')">Administrador</a></li>

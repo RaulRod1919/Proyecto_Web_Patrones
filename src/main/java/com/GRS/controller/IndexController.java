@@ -20,10 +20,4 @@ public class IndexController {
         model.addAttribute("empresa", empresaService.getEmpresa());
         return "index"; // debe estar en: src/main/resources/templates/index.html
     }
-
-    // Página de registro (si la querés desde aquí también)
-    @GetMapping("/registrarse")
-    public String mostrarRegistro() {
-        return "home/registrarse"; // o donde lo tengas ubicado
-    }
 }
