@@ -6,8 +6,8 @@ import com.GRS.services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.List;
+
 
 @Service
 public class UsuariosServiceImpl implements UsuariosService {
@@ -17,7 +17,7 @@ public class UsuariosServiceImpl implements UsuariosService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Usuarios> getUsuarios(boolean activos) {
+    public List<Usuarios> getUsuarios() {
         var lista = usuariosDao.findAll();
         return lista;
     }
@@ -30,8 +30,13 @@ public class UsuariosServiceImpl implements UsuariosService {
 
     @Override
     @Transactional
-    public void save(Usuarios usuarios) {
-        usuariosDao.save(usuarios);
+    public void save(Usuarios usuarios, boolean crearRolUser) {
+        if(crearRolUser){
+            usuarios.setRol("USER");
+            usuariosDao.save(usuarios);
+        }else{
+            usuariosDao.save(usuarios);
+        }
     }
 
     @Override
@@ -45,5 +50,29 @@ public class UsuariosServiceImpl implements UsuariosService {
     @Transactional(readOnly = true)
     public Usuarios getUsuariosPorCorreo(String correo) {
         return usuariosDao.findById(correo).orElse(null);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Usuarios getUsuarioPorUsername(String username) {
+        return usuariosDao.findByUsername(username);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Usuarios getUsuarioPorUsernameYPassword(String username, String password) {
+        return usuariosDao.findByUsernameAndPassword(username, password);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Usuarios getUsuarioPorUsernameOCorreo(String username, String correo) {
+        return usuariosDao.findByUsernameOrCorreo(username, correo);
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public boolean existeUsuarioPorUsernameOCorreo(String username, String correo) {
+        return usuariosDao.existsByUsernameOrCorreo(username, correo);
     }
 }

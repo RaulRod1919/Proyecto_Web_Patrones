@@ -6,66 +6,6 @@
     <title>Registro de Usuario</title>
 </head>
 <body>
-<div class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-light">
-    <div class="row w-75 shadow-lg rounded-4 overflow-hidden">
-
-        <!-- Sección de formulario -->
-        <div class="col-md-6 p-5 bg-white">
-            <h2 class="mb-4">Registro</h2>
-
-            <!-- Íconos sociales -->
-            <div class="d-flex justify-content-around mb-4">
-                <img src="/img/linkedin.png" alt="LinkedIn" class="icono">
-                <img src="/img/chrome.png" alt="Chrome" class="icono">
-                <img src="/img/gmail.png" alt="Gmail" class="icono">
-                <img src="/img/facebook.png" alt="Facebook" class="icono">
-            </div>
-
-            <!-- Formulario -->
-            <form th:action="@{/registrarse}" method="post">
-                <div class="mb-3 input-group">
-                    <span class="input-group-text">
-                        <img src="/img/user.png" alt="Usuario" width="20">
-                    </span>
-                    <input type="text" class="form-control" name="nombre" placeholder="Nombre de Usuario" required>
-                </div>
-
-                <div class="mb-3 input-group">
-                    <span class="input-group-text">
-                        <img src="/img/email.png" alt="email" width="20">
-                    </span>
-                    <input type="email" class="form-control" name="email" placeholder="Email" required>
-                </div>
-
-                <div class="mb-3 input-group">
-                    <span class="input-group-text">
-                        <img src="/img/lock.png" alt="password" width="20">
-                    </span>
-                    <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
-                </div>
-
-                <!-- Campo adicional para el teléfono -->
-                <div class="mb-3 input-group">
-                    <span class="input-group-text">
-                        <img src="/img/phone.png" alt="Teléfono" width="20">
-                    </span>
-                    <input type="text" class="form-control" name="telefono" placeholder="Teléfono" required>
-                </div>
-
-                <!-- Campo oculto para rol -->
-                <input type="hidden" name="rol" value="USER">
-
-                <button type="submit" class="btn btn-registrar w-100">Registrarse</button>
-            </form>
-        </div>
-
-        <!-- Sección lateral -->
-        <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
-            <h2 class="fw-bold mb-3">¡Bienvenido!</h2>
-            <p class="mb-4">Ingrese sus datos personales para todas las funciones del sitio.</p>
-            <a th:href="@{/inicio-sesion}" class="btn btn-outline-light rounded-pill px-4">Iniciar Sesión</a>
-        </div>
-    </div>
-</div>
+    <div th:replace="~{home/fragmentos :: registro}"></div>
 </body>
 </html>

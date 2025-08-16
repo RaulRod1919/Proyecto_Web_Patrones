@@ -22,25 +22,25 @@
             </div>
 
             <!-- Mensaje de error -->
-            <div th:if="${error}" class="alert alert-danger" role="alert">
-                <p th:text="${error}"></p>
+            <div th:if="${param.error}" class="alert alert-danger" role="alert">
+                <p>Error al iniciar sesión</p>
             </div>
 
-            <p class="text-muted">Use su correo y contraseña</p>
+            <p class="text-muted">Use su username y contraseña</p>
 
             <!-- Formulario -->
-            <form th:action="@{/iniciar-sesion}" method="post">
+            <form th:action="@{/login}" method="post">
                 <div class="mb-3 input-group">
                     <span class="input-group-text">
                         <img src="/img/email.png" alt="email" width="20">
                     </span>
-                    <input type="email" class="form-control" placeholder="Email" name="correo" required>
+                    <input type="text" class="form-control" placeholder="Username" name="username" id="username" required>
                 </div>
                 <div class="mb-2 input-group">
                     <span class="input-group-text">
                         <img src="/img/lock.png" alt="password" width="20">
                     </span>
-                    <input type="password" class="form-control" placeholder="Contraseña" name="password" required>
+                    <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" required>
                 </div>
                 <div class="mb-3 text-end">
                     <a th:href="@{/recuperar}" class="text-decoration-none">¿Olvidaste la contraseña?</a>
@@ -53,7 +53,7 @@
         <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
             <h2 class="fw-bold mb-3">¡Bienvenido!</h2>
             <p class="mb-4">Ingrese sus datos personales para todas las funciones del sitio.</p>
-            <a th:href="@{/registrarse}" class="btn btn-outline-light rounded-pill px-4">Registrarse</a>
+            <a th:href="@{/home/registrarse}" class="btn btn-outline-light rounded-pill px-4">Registrarse</a>
         </div>
     </div>
 </div>

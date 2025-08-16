@@ -18,7 +18,7 @@ public class UsuariosController {
 
     @GetMapping("/listado")
     public String listado(Model model){
-        var lista = usuariosService.getUsuarios(false);
+        var lista = usuariosService.getUsuarios();
         model.addAttribute("usuarios",lista);
         model.addAttribute("totalUsuarios",lista.size());
         return "/usuarios/listado";
@@ -26,7 +26,11 @@ public class UsuariosController {
 
     @PostMapping("/guardar")
     public String usuarioGuardar (Usuarios usuarios){
-        usuariosService.save(usuarios);
+        if(usuariosService.existeUsuarioPorUsernameOCorreo(usuarios.getUsername(), usuarios.getCorreo())){
+            usuariosService.save(usuarios, false);
+        }else{
+            usuariosService.save(usuarios, true);
+        }
         return "redirect:/usuario/listado";
     }
 

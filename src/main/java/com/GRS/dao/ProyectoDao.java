@@ -14,4 +14,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ProyectoDao extends JpaRepository<Proyecto, Long> {
     public List<Proyecto> findByIdProyectoOrFechaInicioOrFechaCierreOrUsuarioOrEstado(Long idProyecto,
             LocalDate fechaInicio, LocalDate fechaCierre, Usuarios usuario, String estado);
+    
+    public List<Proyecto> findByUsuario(Usuarios usuario);
 }

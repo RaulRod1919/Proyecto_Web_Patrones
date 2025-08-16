@@ -22,15 +22,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
             <div class="contenedor-form-contacto">
-                <form th:action="@{/contacto/enviar}" class="form-contacto" th:object="${contacto}" method="POST">
+                <form th:action="@{/contacto/enviar}" class="form-contacto" method="POST">
                     <label class="etiqueta">Asunto</label>
-                    <input type="text" class="entrada" th:field="*{asunto}">
+                    <input type="text" class="entrada" name="asunto" required>
                     <label class="etiqueta">Email</label>
-                    <input type="email" class="entrada" required th:field="*{email}">
-                    <label class="etiqueta">Teléfono</label>
-                    <input type="tel" class="entrada" required th:field="*{telefono}">
+                    <input type="email" class="entrada" required th:value="${correo}" name="correo" readonly>
                     <label class="etiqueta">Detalle</label>
-                    <textarea th:field="*{detalle}" rows="4" wrap="soft"></textarea>
+                    <textarea rows="4" wrap="soft" name="detalle" required></textarea>
                     <button type="submit" class="guardar">Enviar</button>
                 </form>
             </div>

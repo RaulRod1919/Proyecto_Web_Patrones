@@ -4,15 +4,18 @@
  */
 package com.GRS.controller;
 
-import com.GRS.domain.Contacto;
-import com.GRS.dao.ContactoDao;
+import com.GRS.domain.Usuarios;
 import com.GRS.services.ContactoService;
+import com.GRS.services.UsuariosService;
+import jakarta.mail.MessagingException;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -24,17 +27,22 @@ public class ContactoController {
 
     @Autowired
     private ContactoService contactoService;
+    
 
     @GetMapping("/solicitudReunion")
-    public String mostrarFormulario(Model model) {
-        model.addAttribute("contacto", new Contacto());
+    public String mostrarFormulario(Model model, HttpSession session) {
+        Usuarios user = (Usuarios)session.getAttribute("usuario");
+        model.addAttribute("correo", user.getCorreo());
         return "/contacto/solicitudReunion";
     }
     
     @PostMapping("/enviar")
-    public String enviar(Contacto contacto){
-        contactoService.save(contacto);
+    public String enviarCorreo(@RequestParam("correo") String correo, 
+            @RequestParam("asunto") String asunto,
+            @RequestParam("detalle") String detalle) throws MessagingException{
+        contactoService.enviarCorreo(asunto, correo, detalle);
         return "redirect:/contacto/solicitudReunion";
     }
+    
 
 }
