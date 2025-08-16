@@ -1,0 +1,117 @@
+/* ======== Variables ======== */
+:root{
+  --wrap: 1200px;
+  --texto:#e9edf6;
+  --muted:#b9c3d8;
+  --panel-izq:#2b5b9a;
+  --card-izq:#1b2b4a;
+  --form-bg1:#101522;
+  --form-bg2:#0f1421;
+  --accent:#5c83e6;
+  --accent-2:#2c4a8a;
+}
+
+/* ======== Base ======== */
+html,body{height:100%}
+body{
+  color: var(--texto);
+  /* 👉 Fondo global: imagen + velo oscuro para contraste */
+  background:
+    linear-gradient(0deg, rgba(10,12,18,.70), rgba(10,12,18,.70)),
+    url('/img/bg-ciudad.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* opcional: efecto parallax suave */
+}
+
+/* contenedor principal alineado */
+.presu-container{
+  max-width: var(--wrap);
+}
+
+/* ======== Panel Izquierdo ======== */
+.panel-izq{
+  background: var(--panel-izq);
+}
+.badge-importante{
+  background:#1e2f56;
+  color:#fff;
+  font-weight:700;
+  border-radius:999px;
+  padding:.5rem 1rem;
+  display:inline-block;
+}
+.panel-izq-card{
+  background: rgba(10,15,30,.55);
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 10px;
+}
+
+/* ======== Franja vertical ======== */
+/* 👉 Ya no se usa: la ocultamos siempre */
+.franja{ display:none !important; }
+
+/* ======== Panel Derecho / Form ======== */
+.panel-der{
+  background: linear-gradient(180deg, var(--form-bg1) 0%, var(--form-bg2) 100%);
+}
+.titulo{ letter-spacing:.2px; }
+.subtitulo{ color: var(--muted); }
+
+.card-form{
+  background: rgba(12,16,28,.55);
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow: 0 8px 26px rgba(0,0,0,.35);
+  border-radius: 12px;
+}
+
+/* Campos */
+.form-label{ color:#d8def0; font-weight:600; }
+.form-select,.form-control{
+  background:#0f1426;
+  border:1px solid #2b354f;
+  color:#e8eeff;
+  height: 42px;
+}
+.form-select:focus,.form-control:focus{
+  border-color: var(--accent);
+  box-shadow: 0 0 0 .2rem rgba(92,131,230,.18);
+}
+
+/* Cajita de nota en el formulario */
+.texto-nota,
+.alert-dark.texto-nota {
+  background: rgba(255,255,255,.08);
+  color: #e9edf6 !important;
+  border: 1px solid rgba(255,255,255,.18);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Mapa */
+.mini-mapa{
+  border: 2px solid rgba(255,255,255,.35);
+  border-radius: 14px;
+  height: 270px;
+  overflow: hidden;
+}
+
+/* Botón */
+.btn-enviar{
+  background: transparent;
+  color: #e8eeff;
+  border: 2px solid #cfd6ea;
+  border-radius: 999px;
+  height: 44px;
+  line-height: 1;
+}
+.btn-enviar:hover{
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
+  border-color: transparent;
+}
+
+/* ======== Responsivo ======== */
+@media (max-width: 991.98px){
+  /* .franja ya está oculta */
+}
