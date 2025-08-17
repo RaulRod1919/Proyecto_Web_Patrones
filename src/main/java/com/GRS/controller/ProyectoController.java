@@ -5,6 +5,7 @@ import com.GRS.domain.Usuarios;
 import com.GRS.services.ProyectoService;
 import com.GRS.services.ServiciosService;
 import com.GRS.services.UsuariosService;
+import com.GRS.servicesImpl.FirebaseStorageServiceImpl;
 import java.time.LocalDate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/proyecto")
@@ -35,13 +37,31 @@ public class ProyectoController {
         model.addAttribute("proyecto", new Proyecto());
         return "/proyecto/panel";
     }
+    @Autowired
+    private FirebaseStorageServiceImpl firebaseStorageService;
 
     @PostMapping("/guardar")
-    public String crear(Proyecto proyecto, RedirectAttributes redirectAttributes) {
+    public String crear(
+            Proyecto proyecto,
+            @RequestParam("imagenFile") MultipartFile imagenFile,
+            RedirectAttributes redirectAttributes) {
+
+        // Verificar si el usuario existe por correo
         Usuarios user = usuarioService.getUsuariosPorCorreo(proyecto.getUsuario().getCorreo());
+
         if (user != null) {
             proyecto.setUsuario(user);
+
+            // Guardar inicialmente para obtener el ID del proyecto (si es necesario)
             proyectoService.save(proyecto);
+
+            // Si hay imagen, subirla a Firebase y guardar ruta
+            if (!imagenFile.isEmpty()) {
+                String rutaImagen = firebaseStorageService.cargaImagen(imagenFile, "proyecto", proyecto.getIdProyecto());
+                proyecto.setRutaImagen(rutaImagen); // Asegúrate de que exista este campo en tu entidad Proyecto
+                proyectoService.save(proyecto); // Guardar nuevamente con la ruta de la imagen
+            }
+
             return "redirect:/proyecto/panel";
         } else {
             redirectAttributes.addFlashAttribute("error", "El usuario no existe.");

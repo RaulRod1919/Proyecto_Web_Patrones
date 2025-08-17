@@ -73,19 +73,10 @@ DEFAULT CHARACTER SET = utf8mb4;
 
 CREATE TABLE usuarios (
   correo VARCHAR(70) NOT NULL,
-  nombre VARCHAR(50) NOT NULL,
+  username VARCHAR(50) NOT NULL,
   password VARCHAR(30) NOT NULL,
   rol VARCHAR(30) NOT NULL,
   PRIMARY KEY (correo))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
-
-CREATE TABLE telefonos (
-  id_telefono INT NOT NULL AUTO_INCREMENT,
-  correo VARCHAR(70) NOT NULL,
-  nombre VARCHAR(50) NOT NULL,
-  PRIMARY KEY (id_telefono),
-  foreign key fk_correo (correo) references usuarios(correo))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
@@ -98,6 +89,7 @@ CREATE TABLE proyectos (
   fecha_inicio DATE NOT NULL,
   fecha_cierre DATE NOT NULL,
   estado VARCHAR(30) NOT NULL,
+  ruta_imagen varchar(1024)
   progreso INT NOT NULL,
   PRIMARY KEY (id_proyecto),
   foreign key fk_id_servicio (id_servicio) references servicios(id_servicio),
@@ -114,23 +106,15 @@ CREATE TABLE imagenes_proyectos (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE contacto (
-    id_contacto INT AUTO_INCREMENT PRIMARY KEY,
-    asunto VARCHAR(70) NOT NULL,
-    email VARCHAR(70) NOT NULL,
-    telefono INT NOT NULL,
-    detalle VARCHAR(255)
-);
-
-drop table contacto;
-
 INSERT INTO empresa (descripcion, nombre) 
 VALUES ('GRS Construcciones es una empresa comprometida con el desarrollo de proyectos de construcción de alta calidad, orientada a ofrecer soluciones innovadoras, seguras y sostenibles.Con una sólida trayectoria en el sector, nos especializamos en obras residenciales, comerciales e industriales, brindando un servicio integral que abarca desde el diseño hasta la ejecución final.
 Nuestro equipo está conformado por profesionales altamente calificados, que trabajan con pasión, responsabilidad y respeto por el entorno. En GRS Construcciones creemos en la importancia de construir más que estructuras: construimos espacios que mejoran la calidad de vida de las personas y fomentan el progreso de las comunidades.
 Nos distinguimos por nuestro compromiso con la excelencia, el cumplimiento de los plazos y el uso de materiales de primera calidad. Cada proyecto que realizamos es una muestra de nuestra dedicación y de la confianza que nuestros clientes depositan en nosotros.
 
 ', 'GRS Construcciones');
-                    
+             
+INSERT INTO usuario (username,password,correo, rol) VALUES 
+(1,'juan196','$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.','jcastro@gmail.com', 'ADMIN'),           
 INSERT INTO servicios (id_empresa, nombre, descripcion) 
 VALUES (1, 'Paquete Completo', 'Lorem ipsum dolor sit amet consectetur adipiscing, elit sagittis torquent primis tincidunt, vivamus iaculis dictum placerat congue. 
                     Sociosqu vehicula varius molestie tristique dapibus rhoncus suscipit nascetur habitasse, scelerisque placerat venenatis facilisis 

@@ -59,6 +59,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <th>Solicitante</th>
                             <th>Estado</th>
                             <th></th>
+                            
+                         
                         </tr>
                     </thead>
                     <tbody>
@@ -141,6 +143,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             th:text="${servicio.nombre}">
                                     </option>
                                 </select>
+                            </div>
+                            <div class="mb-3">
+                                    <label for="imagen">[[#{proyecto.rutaImagen}]]</label>
+                                    <input class="form-control" 
+                                           type="file" 
+                                           name="imagenFile" 
+                                           onchange="readURL(this);"/>
+                                    <img id="blah" src="#" alt="your image" height="200"/>
+                                </div>
+                           </div>
+                                
                             </div>
                             <div class="modal-footer">
                                 <button class="btn btn-primary" type="submit">Guardar</button>
