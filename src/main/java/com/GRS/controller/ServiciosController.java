@@ -47,4 +47,9 @@ public class ServiciosController {
         model.addAttribute("servicio", serviciosService.getServicio(servicio));
         return "/servicios/disenoConstruccion";
     }
+    
+    @GetMapping("/presupuesto")
+    public String vistaPresupuesto(Model model){
+        return "/servicios/presupuesto";
+    }
 }
