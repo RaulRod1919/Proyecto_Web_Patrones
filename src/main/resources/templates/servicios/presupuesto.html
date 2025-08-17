@@ -5,9 +5,7 @@
     <link th:href="@{/css/styles.css}" rel="stylesheet"/>
 </head>
 <body>
-    <header th:replace="~{layout/plantilla :: header}">
-        
-    </header>
+<header th:replace="~{layout/plantilla :: header}"></header>
 <main class="container-xl presu-container">
     <div class="row g-0 align-items-stretch">
 
@@ -44,17 +42,12 @@
             </header>
 
             <div class="card card-form p-4">
-                <form class="row g-4" method="post">
+                <form class="row g-4" action="#" method="post">
+
                     <!-- Fila 1: Área / Acabados -->
                     <div class="col-12 col-md-6">
                         <label for="area" class="form-label">ÁREA DE LA CONSTRUCCIÓN</label>
-                        <select id="area" name="areaM2" class="form-select" required>
-                            <option value="" selected>En mts2</option>
-                            <option value="50-80">50–80 m²</option>
-                            <option value="81-120">81–120 m²</option>
-                            <option value="121-180">121–180 m²</option>
-                            <option value="180+">180+ m²</option>
-                        </select>
+                        <input id="area" type="number" class="form-select" required></select>
                     </div>
 
                     <div class="col-12 col-md-6">
@@ -85,7 +78,10 @@
 
                     <div class="col-12 col-md-6">
                         <label class="form-label">Ubicación</label>
-                        <input type="">
+                        <div id="map" class="mini-mapa"></div>
+                        <br>
+                        <input type="url" class="form-select" placeholder="Ubicación" name="ubicación" 
+                               id="mapLink" required readonly>
                     </div>
 
                     <!-- Botón -->
@@ -97,5 +93,30 @@
         </section>
     </div>
 </main>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+      var map = L.map('map').setView([9.934739, -84.090724], 13); // Coordenadas iniciales: San José CR
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a>'
+      }).addTo(map);
+
+      var marker;
+
+    map.on('click', function(e) {
+      var lat = e.latlng.lat;
+      var lng = e.latlng.lng;
+
+      if (marker) {
+        marker.setLatLng(e.latlng);
+      } else {
+        marker = L.marker(e.latlng).addTo(map);
+      }
+
+      var link = "https://www.google.com/maps?q=" + lat + "," + lng;
+      document.getElementById("mapLink").value = link;
+    });
+    });
+</script>
 </body>
-</html>>
+</html>
