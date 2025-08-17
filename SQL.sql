@@ -74,7 +74,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE usuarios (
   correo VARCHAR(70) NOT NULL,
   username VARCHAR(50) NOT NULL,
-  password VARCHAR(30) NOT NULL,
+  password VARCHAR(250) NOT NULL,
   rol VARCHAR(30) NOT NULL,
   PRIMARY KEY (correo))
 ENGINE = InnoDB
@@ -111,29 +111,26 @@ Nuestro equipo está conformado por profesionales altamente calificados, que tra
 Nos distinguimos por nuestro compromiso con la excelencia, el cumplimiento de los plazos y el uso de materiales de primera calidad. Cada proyecto que realizamos es una muestra de nuestra dedicación y de la confianza que nuestros clientes depositan en nosotros.
 
 ', 'GRS Construcciones');
-             
-INSERT INTO usuario (username,password,correo, rol) VALUES 
-(1,'juan196','$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.','jcastro@gmail.com', 'ADMIN'),           
+
+insert into tipos_terrenos (id_empresa, nombre) values (1, 'Plano');
+insert into tipos_terrenos (id_empresa, nombre) values (1, 'Irregular');
+insert into tipos_terrenos (id_empresa, nombre) values (1, 'Pendiente');
+insert into tipos_acabados (id_empresa, nombre) values (1, 'Block');
+insert into tipos_acabados (id_empresa, nombre) values (1, 'Liviano');
+insert into tipos_acabados (id_empresa, nombre) values (1, 'Prefabricado');
+
+Insert into usuarios (correo, username, password, rol) values ('juam@gmail.com', 'juan196', '$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.', 'ADMIN');             
 INSERT INTO servicios (id_empresa, nombre, descripcion) 
-VALUES (1, 'Paquete Completo', 'Lorem ipsum dolor sit amet consectetur adipiscing, elit sagittis torquent primis tincidunt, vivamus iaculis dictum placerat congue. 
-                    Sociosqu vehicula varius molestie tristique dapibus rhoncus suscipit nascetur habitasse, scelerisque placerat venenatis facilisis 
-                    dis orci blandit conubia interdum, metus vulputate parturient libero netus hac consequat odio. Molestie sodales curabitur laoreet 
-                    pretium at cursus parturient, porta interdum phasellus pellentesque condimentum. Risus eleifend potenti at convallis morbi ac felis 
-                    posuere, himenaeos facilisi ut magnis proin aliquam dictumst tortor, molestie interdum nulla sem scelerisque justo quam.');
+VALUES (1, 'Paquete Completo', 'Nuestro Paquete Completo incluye todo el proceso de construcción, desde la planificación y diseño hasta la ejecución y entrega final. 
+Nos encargamos de cada detalle, asegurando calidad, eficiencia y cumplimiento de los plazos establecidos, para que tu proyecto se materialice sin complicaciones.');
 
 INSERT INTO servicios (id_empresa, nombre, descripcion) 
-VALUES (1, 'Solo Construcción', 'Lorem ipsum dolor sit amet consectetur adipiscing, elit sagittis torquent primis tincidunt, vivamus iaculis dictum placerat congue. 
-                    Sociosqu vehicula varius molestie tristique dapibus rhoncus suscipit nascetur habitasse, scelerisque placerat venenatis facilisis 
-                    dis orci blandit conubia interdum, metus vulputate parturient libero netus hac consequat odio. Molestie sodales curabitur laoreet 
-                    pretium at cursus parturient, porta interdum phasellus pellentesque condimentum. Risus eleifend potenti at convallis morbi ac felis 
-                    posuere, himenaeos facilisi ut magnis proin aliquam dictumst tortor, molestie interdum nulla sem scelerisque justo quam.');
+VALUES (1, 'Solo Construcción', 'Servicio especializado en la ejecución de obras, proporcionando mano de obra calificada y gestión de materiales. 
+Ideal para clientes que ya cuentan con planos o diseños, y buscan una construcción sólida, segura y dentro del tiempo estipulado.');
                     
 INSERT INTO servicios (id_empresa, nombre, descripcion) 
-VALUES (1, 'Diseño y Construcción', 'Lorem ipsum dolor sit amet consectetur adipiscing, elit sagittis torquent primis tincidunt, vivamus iaculis dictum placerat congue. 
-                    Sociosqu vehicula varius molestie tristique dapibus rhoncus suscipit nascetur habitasse, scelerisque placerat venenatis facilisis 
-                    dis orci blandit conubia interdum, metus vulputate parturient libero netus hac consequat odio. Molestie sodales curabitur laoreet 
-                    pretium at cursus parturient, porta interdum phasellus pellentesque condimentum. Risus eleifend potenti at convallis morbi ac felis 
-                    posuere, himenaeos facilisi ut magnis proin aliquam dictumst tortor, molestie interdum nulla sem scelerisque justo quam.');
+VALUES (1, 'Diseño y Construcción', 'Ofrecemos un servicio integral de diseño y construcción, combinando creatividad arquitectónica con excelencia en la ejecución. Acompañamos 
+al cliente desde la conceptualización del proyecto hasta la entrega final, garantizando funcionalidad, estética y cumplimiento normativo.');
 
 
 INSERT INTO tipos_construcciones (id_empresa, nombre, descripcion) VALUES

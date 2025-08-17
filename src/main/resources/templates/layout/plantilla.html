@@ -34,7 +34,8 @@
                             <a class="dropdown-item" th:href="@{/servicios/paqueteCompleto/1}">Paquete Completo</a>
                             <a class="dropdown-item" th:href="@{/servicios/soloConstruccion/2}">Solo Construcción</a>
                             <a class="dropdown-item" th:href="@{/servicios/disenoConstruccion/3}">Diseño y Construcción</a>
-                            <a class="dropdown-item" th:href="@{/servicios/presupuesto}">Calculo de Presupuesto</a>
+                            <a class="dropdown-item" th:href="@{/servicios/presupuesto}" 
+                               sec:authorize="hasRole('ROLE_USER') or hasRole('ROLE_ADMIN')or hasRole('ROLE_ING')">Calculo de Presupuesto</a>
                         </div>
                     <li class="nav-it dropdown" >
                         <a href="#" class="dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" 
