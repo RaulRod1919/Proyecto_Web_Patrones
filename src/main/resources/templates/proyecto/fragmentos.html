@@ -237,6 +237,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                                         th:text="${servicio.nombre}">
                                                 </option>
                                             </select>
+                                            <div class="mb-3">
+                                                <label for="imagen">Imagen Proyecto</label>
+                                                <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                                <img id="blah" alt="your image" height="200" th:src="${proyecto.rutaImagen}" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
