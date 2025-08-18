@@ -47,12 +47,12 @@
                     <!-- Fila 1: Área / Acabados -->
                     <div class="col-12 col-md-6">
                         <label for="area" class="form-label">ÁREA DE LA CONSTRUCCIÓN</label>
-                        <input id="area" name="area" type="number" step="0.01" class="form-select" required></select>
+                        <input id="area" name="area" type="number" step="0.01" class="form-select2" required></select>
                     </div>
 
                     <div class="col-12 col-md-6">
                         <label for="acabados" class="form-label">Tipos de Acabados</label>
-                        <select id="acabados" name="acabados" class="form-select" required>
+                        <select id="acabados" name="acabados" class="form-select2" required>
                             <option th:each="acabado : ${acabados}" th:value="${acabado.nombre}"
                                     th:text="${acabado.nombre}"></option>
                         </select>
@@ -61,7 +61,7 @@
                     <!-- Fila 2: Terreno / Ubicación (mapa) -->
                     <div class="col-12 col-md-6">
                         <label for="terreno" class="form-label">Tipo de Terreno</label>
-                        <select id="terreno" name="terreno" class="form-select" required>
+                        <select id="terreno" name="terreno" class="form-select2" required>
                             <option th:each="terreno : ${terrenos}" th:value="${terreno.nombre}"
                                     th:text="${terreno.nombre}"></option>
                         </select>
@@ -77,7 +77,7 @@
                         <div id="map" class="mini-mapa"></div>
                         <br>
                         <input type="hidden" name="ubicacion" id="ubicacionHidden" required>
-                        <input type="text" class="form-select" placeholder="Ubicación" id="mapLink" readonly>
+                        <input type="text" class="form-select2" placeholder="Ubicación" id="mapLink" readonly>
                     </div>
 
                     <!-- Botón -->

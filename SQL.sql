@@ -52,15 +52,6 @@ CREATE TABLE proyectos_realizados (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE imagenes_proyectos_realizados (
-  id_imagen_proyecto_realizado INT NOT NULL AUTO_INCREMENT,
-  id_proyecto_realizado INT NOT NULL,
-  direccion VARCHAR(50) NOT NULL,
-  PRIMARY KEY (id_imagen_proyecto_realizado),
-  foreign key fk_id_proyecto_realizado (id_proyecto_realizado) references proyectos_realizados(id_proyecto_realizado))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
-
 CREATE TABLE servicios (
   id_servicio INT NOT NULL AUTO_INCREMENT,
   id_empresa INT NOT NULL,

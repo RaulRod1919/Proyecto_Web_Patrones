@@ -68,7 +68,7 @@ body{
 
 /* Campos */
 .form-label{ color:#d8def0; font-weight:600; }
-.form-select,.form-control{
+.form-select2{
   background:#0f1426;
   border:1px solid #2b354f;
   color:#e8eeff;
