@@ -12,20 +12,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <section class="quienes-somos" th:fragment="quienes-somos">
             <div class="contenedor-home">
-                <h1>¿Quienes Somos?</h1>
+                <h1>[[#{quienes.somos}]]</h1>
                 <a th:href="@{/home/tiposCons}"><div class="flecha-abajo">
                         <img src="/img/punta-de-flecha-hacia-abajo.png" alt="Flecha"/>
                     </div></a>
             </div>
             <div class="contenedor-info">
-                <h2>Información</h2>
+                <h2>[[#{informacion}]]</h2>
                 <p th:text="${empresa.descripcion}"></p>
             </div>
         </section>
 
         <section class="quines-somos tipos-cons" th:fragment="tipos-cons">
             <div class="contenedor-home">
-                <h1>Tipos de Construcción que Realizamos</h1>
+                <h1>[[#{tipo.construccion}]]</h1>
                 <a th:href="@{/}"><div class="flecha-arriba">
                         <img src="/img/punta-de-flecha-hacia-arriba.png" alt="Flecha"/>
                     </div></a>
@@ -34,7 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     </div></a>
             </div>
             <div class="contenedor-info">
-                <h2>Información</h2>
+                <h2>[[#{informacion}]]</h2>
                 <div>
                     <p th:each="tipoConstruccion : ${tiposConstrucciones}" 
                        th:text="${tipoConstruccion.nombre} + ': ' + ${tipoConstruccion.descripcion}"></p>
@@ -44,22 +44,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
         <section class="quines-somos tipos-cons" th:fragment="proyectos">
             <div class="contenedor-home">
-                <h1>Proyectos Realizados</h1>
+                <h1>P[[#{proyectos.realizados}]]</h1>
                 <a th:href="@{/home/tiposCons}"><div class="flecha-arriba">
                         <img src="/img/punta-de-flecha-hacia-arriba.png" alt="Flecha"/>
                     </div></a>
                 <button type="button" class="btn-panel btn-crud agregar"
                         data-bs-toggle="modal" 
-                        data-bs-target="#agregarProyecto" sec:authorize="hasRole('ROLE_ADMIN')">Agregar</button>
+                        data-bs-target="#agregarProyecto" sec:authorize="hasRole('ROLE_ADMIN')">[[#{accion.agregar}]]</button>
 
             </div>
             <div class="contenedor-info">
-                <h2>Información</h2>
+                <h2>[[#{informacion}]]</h2>
                 <div>
                     <div th:each="p : ${proyectos}" class="mb-3">
                         <a th:href="@{'/home/detalle/' + ${p.idProyectoRealizado}}"
                            class="btn btn-primary w-100 btn-proyecto d-flex justify-content-between align-items-center">
-                            <span th:text="${p.nombre} ">Nombre del Proyecto </span>
+                            <span th:text="${p.nombre} ">[[#{nombre.proyecto}]] </span>
                             <i class="fa-solid fa-up-right-from-square "></i>
                         </a>
                     </div>
@@ -76,22 +76,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title">Proyecto</h5>
+                            <h5 class="modal-title">[[#{proyecto}]]</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
                         <form th:object="${proyecto}" th:action="@{/home/save}"
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="descripcion">Nombre</label>
+                                    <label for="descripcion">[[#{login.usuario}]]</label>
                                     <input type="text" class="form-control" th:field="*{nombre}" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="descripcion">Descripcion</label>
+                                    <label for="descripcion">[[#{descripcion}]]</label>
                                     <textarea rows="3" type="text" class="form-control" required="true" th:field="*{descripcion}"></textarea>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="imagen">Ruta de la Imagen</label>
+                                    <label for="imagen">[[#{proyecto.rutaImagen}]]</label>
                                     <input class="form-control" 
                                            type="file" 
                                            name="imagenFile" 
@@ -99,7 +99,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <img id="blah" src="#" alt="your image" height="200"/>
                                 </div>
                                 <div class="modal-footer">
-                                    <button class="btn btn-primary" type="submit">Guardar</button>
+                                    <button class="btn btn-primary" type="submit">[[#{accion.guardar}]]</button>
                                 </div>
                             </div>
                         </form>
@@ -113,7 +113,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 
                 <!-- Sección de formulario -->
                 <div class="col-md-6 p-5 bg-white">
-                    <h2 class="mb-4">Registro</h2>
+                    <h2 class="mb-4">[[#{registro}]]</h2>
 
                     <!-- Íconos sociales -->
                     <div class="d-flex justify-content-around mb-4">
@@ -150,15 +150,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
                         </div>
 
-                        <button type="submit" class="btn btn-registrar w-100">Registrarse</button>
+                        <button type="submit" class="btn btn-registrar w-100">[[#{accion.registrar}]]</button>
                     </form>
                 </div>
 
                 <!-- Sección lateral -->
                 <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
-                    <h2 class="fw-bold mb-3">¡Bienvenido!</h2>
-                    <p class="mb-4">Ingrese sus datos personales para todas las funciones del sitio.</p>
-                    <a th:href="@{/login}" class="btn btn-outline-light rounded-pill px-4">Iniciar Sesión</a>
+                    <h2 class="fw-bold mb-3">[[#{bienvenido}]]</h2>
+                    <p class="mb-4">[[#{datos.personales}]]</p>
+                    <a th:href="@{/login}" class="btn btn-outline-light rounded-pill px-4">[[#{iniciar.sesion}]]</a>
                 </div>
             </div>
         </div>
@@ -168,17 +168,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div class="row center">
                     <div class="col-md-4 d-grid">
                         <a th:href="@{/home/proyectos}" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i> Regresar
+                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
                         <a th:href="@{'/home/editar/' + ${proyecto.idProyectoRealizado}}" class="btn btn-success">
-                            <i class="fas fa-check"></i> Editar
+                            <i class="fas fa-check"></i> [[#{accion.editar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
                         <a th:href="@{/home/eliminar/}+${proyecto.idProyectoRealizado}" class="btn btn-danger">
-                            <i class="fas fa-trash"></i> Eliminar
+                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
                 </div>
@@ -190,12 +190,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div class="row center2">
                     <div class="col-md-4 d-grid">
                         <a th:href="@{/home/proyectos}" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i> Regresar
+                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
                         <button type="submit" class="btn btn-success">
-                            <i class="fas fa-check"></i> Guardar
+                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>
                 </div>
@@ -219,15 +219,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                     <div class="col">
                                         <div class="card">
                                             <div class="mb-3">
-                                                <label for="descripcion">Nombre</label>
+                                                <label for="descripcion">[[#{nombre}]]</label>
                                                 <input type="text" class="form-control" th:field="*{nombre}" required="true"/>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="descripcion">Descripcion</label>
+                                                <label for="descripcion">[[#{descripcion}]]</label>
                                                 <textarea rows="3" type="text" class="form-control" required="true" th:field="*{descripcion}"></textarea>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="imagen">Ruta de la Imagen</label>
+                                                <label for="imagen">[[#{proyecto.rutaImagen}]]</label>
                                                 <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
                                                 <img id="blah" alt="your image" height="350" th:src="${proyecto.rutaImagen}" />
                                             </div>
@@ -283,14 +283,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                         <!-- Campo oculto para rol -->
                         <input type="hidden" name="rol" value="USER">
 
-                        <button type="submit" class="btn btn-registrar w-100">Activar</button>
+                        <button type="submit" class="btn btn-registrar w-100">[[#{activar}]]</button>
                     </form>
                 </div>
 
                 <!-- Sección lateral -->
                 <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
-                    <h2 class="fw-bold mb-3">Activación de Usuario</h2>
-                    <p class="mb-4">Este es el apartado donde podras activar tu cuenta de usuario, rellana esos datos para continuar.</p>
+                    <h2 class="fw-bold mb-3">[[#{registro.activar}]]</h2>
+                    <p class="mb-4">[[#{mensaje.activar.cuenta}]]</p>
                 </div>
             </div>
         </div>

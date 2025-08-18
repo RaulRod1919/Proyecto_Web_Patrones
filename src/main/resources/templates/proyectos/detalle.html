@@ -7,22 +7,22 @@
 
         <div class="detalle-container">
             <div class="detalle-izquierda">
-                <h1>Información del Proyecto</h1>
-                <p><strong>Nombre:</strong> <span th:text="${proyecto.nombre}"></span></p>
-                <p><strong>Servicio:</strong> <span th:text="${proyecto.servicio.nombre}"></span></p>
-                <p><strong>Usuario:</strong> <span th:text="${proyecto.usuario.correo}"></span></p>
-                <p><strong>Presupuesto:</strong> ₡<span th:text="${#numbers.formatDecimal(proyecto.presupuesto,0,'COMMA',2,'POINT')}"></span></p>
-                <p><strong>Fecha de Inicio:</strong> <span th:text="${proyecto.fechaInicio}"></span></p>
-                <p><strong>Fecha de Cierre:</strong> <span th:text="${proyecto.fechaCierre}"></span></p>
-                <p><strong>Estado:</strong> <span th:text="${proyecto.estado}"></span></p>
+                <h1>[[#{informacion.proyecto}]]</h1>
+                <p><strong>[[#{usuario.nombre}]]</strong> <span th:text="${proyecto.nombre}"></span></p>
+                <p><strong>[[#{servicio}]]</strong> <span th:text="${proyecto.servicio.nombre}"></span></p>
+                <p><strong>[[#{usuario}]]</strong> <span th:text="${proyecto.usuario.correo}"></span></p>
+                <p><strong>[[#{presupuesto}]]</strong> ₡<span th:text="${#numbers.formatDecimal(proyecto.presupuesto,0,'COMMA',2,'POINT')}"></span></p>
+                <p><strong>[[#{fecha.inicio}]]</strong> <span th:text="${proyecto.fechaInicio}"></span></p>
+                <p><strong>[[#{fecha.cierre}]]</strong> <span th:text="${proyecto.fechaCierre}"></span></p>
+                <p><strong>[[#{estado}]]</strong> <span th:text="${proyecto.estado}"></span></p>
                 <div class="mb-3">
-                    <label for="imagen">Imagen Proyecto</label><br>
+                    <label for="imagen">[[#{proyecto.rutaImagen}]]</label><br>
                     <img id="blah" alt="your image" height="200" th:src="${proyecto.rutaImagen}" />
                 </div>
             </div>
 
             <div class="detalle-derecha">
-                <h2>Progreso del Proyecto</h2>
+                <h2>[[#{progreso.proyecto}]]</h2>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" th:style="'width:' + ${proyecto.progreso} + '%'"
                          th:text="${proyecto.progreso} + '%'" aria-valuemin="0" aria-valuemax="100"></div>

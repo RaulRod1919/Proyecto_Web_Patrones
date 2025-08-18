@@ -12,30 +12,30 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
     <body>
         <section class="paquete-completo" th:fragment="paquete-completo">
             <div class="contenedor-home">
-                <h1 th:text="${servicio.nombre}">Nombre</h1>
+                <h1 th:text="${servicio.nombre}">[[#{usuario.nombre}]]</h1>
             </div>
             <div class="contenedor-info">
-                <h2>Información</h2>
+                <h2>[[#{informacion}]]</h2>
                 <p th:text="${servicio.descripcion}"></p>
             </div>
         </section>
 
         <section class="diseno-construccion" th:fragment="diseno-construccion">
             <div class="contenedor-home">
-                <h1 th:text="${servicio.nombre}">Nombre</h1>
+                <h1 th:text="${servicio.nombre}">[[#{usuario.nombre}]]</h1>
             </div>
             <div class="contenedor-info">
-                <h2>Información</h2>
+                <h2>[[#{informacion}]]</h2>
                 <p th:text="${servicio.descripcion}"></p>
             </div>
         </section>
 
         <section class="solo-construccion" th:fragment="solo-construccion">
             <div class="contenedor-home">
-                <h1 th:text="${servicio.nombre}">Nombre</h1>
+                <h1 th:text="${servicio.nombre}">[[#{usuario.nombre}]]</h1>
             </div>
             <div class="contenedor-info">
-                <h2>Información</h2>
+                <h2>[[#{informacion}]]</h2>
                 <p th:text="${servicio.descripcion}"></p>
             </div>
         </section>
@@ -46,34 +46,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="col-md-8">
                         <div class="card shadow">
                             <div class="card-header bg-primary text-white">
-                                <h4>Solicitud de Reunión</h4>
+                                <h4>[[#{solicitud.reunion}]]</h4>
                             </div>
                             <div class="card-body">
                                 <form th:action="@{/contacto}" th:object="${contacto}" method="POST" class="was-validated">
                                     <div class="mb-3">
-                                        <label for="asunto">Asunto</label>
+                                        <label for="asunto">[[#{asunto}]]</label>
                                         <input type="text" class="form-control"
                                                th:field="*{asunto}" required maxlength="70" placeholder="Ej. Consulta de proyecto"/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="email">Email</label>
+                                        <label for="email">[[#{email}]]</label>
                                         <input type="email" class="form-control"
                                                th:field="*{email}" required maxlength="70" placeholder="tucorreo@ejemplo.com"/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="telefono">Teléfono</label>
+                                        <label for="telefono">[[#{usuario.telefono}]]</label>
                                         <input type="text" class="form-control"
                                                th:field="*{telefono}" maxlength="20" placeholder="Opcional"/>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="detalle">Detalle</label>
+                                        <label for="detalle">[[#{detalle}]]</label>
                                         <textarea class="form-control"
                                                   th:field="*{detalle}" maxlength="255"
                                                   rows="4" placeholder="Especifica el motivo de la reunión, fecha tentativa, etc."></textarea>
                                     </div>
                                     <div class="text-end">
                                         <button type="submit" class="btn btn-success">
-                                            <i class="fas fa-paper-plane"></i> Enviar Solicitud
+                                            <i class="fas fa-paper-plane"></i> [[#{enviar.solicitud}]]
                                         </button>
                                     </div>
                                 </form>

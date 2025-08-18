@@ -12,21 +12,15 @@
         <!-- Izquierda: panel importante -->
         <aside class="col-12 col-lg-3 p-3 p-md-4 panel-izq">
             <div class="text-center mb-3">
-                <span class="badge-importante">IMPORTANTE</span>
+                <span class="badge-importante">[[#{importante}]]</span>
             </div>
 
             <div class="card panel-izq-card p-3">
                 <small class="text-light">
-                    El valor que se le enviará vía correo es un cálculo aproximado basado en datos
-                    generales como el tipo de construcción, metros cuadrados y calidad de acabados
-                    seleccionados. <br><br>
-                    No representa un presupuesto real ni definitivo, ya que no se han considerado planos
-                    detallados, estudios de suelo, normativa local ni otros aspectos técnicos. <br><br>
-                    Los datos proporcionados serán enviados a un arquitecto de nuestro equipo, quien podrá
-                    analizar tu proyecto de forma más precisa. <br><br>
-                    Si estás interesado en avanzar, uno de nuestros profesionales se pondrá en contacto
-                    contigo para agendar una reunión presencial o virtual, donde se revisarán todos los
-                    detalles y se podrá elaborar un presupuesto completo y personalizado.
+                    [[#{mensaje.presupuesto.1}]] <br><br>
+                    [[#{mensaje.presupuesto.2}]] <br><br>
+                    [[#{mensaje.presupuesto.3}]] <br><br>
+                    [[#{mensaje.presupuesto.4}]]
                 </small>
             </div>
         </aside>
@@ -37,8 +31,8 @@
         <!-- Derecha: formulario -->
         <section class="col-12 col-lg-8 p-3 p-md-4 panel-der">
             <header class="mb-4 text-center text-lg-start">
-                <h1 class="display-6 fw-bold titulo">¡Envíanos tus Datos de Proyecto!</h1>
-                <p class="lead subtitulo">Necesitamos los siguientes datos para que nuestro arquitecto pueda calcularte un presupuesto general y enviarlo por correo.</p>
+                <h1 class="display-6 fw-bold titulo">[[#{envianos.proyecto}]]</h1>
+                <p class="lead subtitulo">[[#{mensaje.presupuesto.5}]]</p>
             </header>
 
             <div class="card card-form p-4">
@@ -46,12 +40,12 @@
 
                     <!-- Fila 1: Área / Acabados -->
                     <div class="col-12 col-md-6">
-                        <label for="area" class="form-label">ÁREA DE LA CONSTRUCCIÓN</label>
+                        <label for="area" class="form-label">[[#{area.construccion}]]</label>
                         <input id="area" name="area" type="number" step="0.01" class="form-select2" required></select>
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label for="acabados" class="form-label">Tipos de Acabados</label>
+                        <label for="acabados" class="form-label">[[#{tipos.acabados}]]</label>
                         <select id="acabados" name="acabados" class="form-select2" required>
                             <option th:each="acabado : ${acabados}" th:value="${acabado.nombre}"
                                     th:text="${acabado.nombre}"></option>
@@ -60,20 +54,19 @@
 
                     <!-- Fila 2: Terreno / Ubicación (mapa) -->
                     <div class="col-12 col-md-6">
-                        <label for="terreno" class="form-label">Tipo de Terreno</label>
+                        <label for="terreno" class="form-label">[[#{tipo.terreno}]]</label>
                         <select id="terreno" name="terreno" class="form-select2" required>
                             <option th:each="terreno : ${terrenos}" th:value="${terreno.nombre}"
                                     th:text="${terreno.nombre}"></option>
                         </select>
 
                         <div class="alert texto-nota mt-4 mb-0 text-center">
-                            Gracias por confiar en nosotros, recuerda iniciar sesión antes de enviar el formulario,
-                            nos pondremos en contacto contigo
+                            [[#{mensaje.presupuesto.6}]]
                         </div>
                     </div>
 
                     <div class="col-12 col-md-6">
-                        <label class="form-label">Ubicación</label>
+                        <label class="form-label">[[#{ubicacion}]]</label>
                         <div id="map" class="mini-mapa"></div>
                         <br>
                         <input type="hidden" name="ubicacion" id="ubicacionHidden" required>
@@ -82,7 +75,7 @@
 
                     <!-- Botón -->
                     <div class="col-12 d-flex justify-content-center justify-content-md-start">
-                        <button type="submit" class="btn btn-enviar px-4">Enviar!</button>
+                        <button type="submit" class="btn btn-enviar px-4">[[#{accion.enviar}]]</button>
                     </div>
                 </form>
             </div>

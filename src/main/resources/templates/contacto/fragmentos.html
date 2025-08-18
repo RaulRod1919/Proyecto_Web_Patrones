@@ -13,23 +13,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <section class="contacto" th:fragment="solicitud-de-reunion">
             <div class="contenedor-mensaje">
                 <div class="contenedor-titulo">
-                    <h2>Contacto</h2>
+                    <h2>[[#{contacto}]]</h2>
                 </div>
                 <div class="contenedor-medios">
-                    <p>¿Tenés consultas o reclamos? ¡Estamos para ayudarte! Podés comunicarte con GRS Construcciones por los siguientes medios:</p>
-                    <p>📞 Central telefónica: 6076-7155</p>
-                    <p>📧 Correo electrónico general: grodrodriguez757@gmail.com</p>
+                    <p>[[#{mensaje.reclamo}]]</p>
+                    <p>[[#{mensaje.reclamo.telefono}]]</p>
+                    <p>[[#{mensaje.reclamo.correo}]]</p>
                 </div>
             </div>
             <div class="contenedor-form-contacto">
                 <form th:action="@{/contacto/enviar}" class="form-contacto" method="POST">
-                    <label class="etiqueta">Asunto</label>
+                    <label class="etiqueta">[[#{asunto}]]</label>
                     <input type="text" class="entrada" name="asunto" required>
-                    <label class="etiqueta">Email</label>
+                    <label class="etiqueta">[[#{email}]]</label>
                     <input type="email" class="entrada" required th:value="${correo}" name="correo" readonly>
-                    <label class="etiqueta">Detalle</label>
+                    <label class="etiqueta">[[#{detalle}]]</label>
                     <textarea rows="4" wrap="soft" name="detalle" required></textarea>
-                    <button type="submit" class="guardar">Enviar</button>
+                    <button type="submit" class="guardar">[[#{accion.enviar}]]</button>
                 </form>
             </div>
         </section>

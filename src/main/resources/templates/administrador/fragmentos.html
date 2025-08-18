@@ -14,22 +14,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             <div class="contenedor-form-gestion">
                 <div th:replace="~{administrador/fragmentos :: mensajes}"></div>
                 <form th:action="@{/administrador/actualizar}" class="form-gestion" th:object="${usuario}" method="POST">
-                    <label class="etiqueta">Correo de la Cuenta</label>
+                    <label class="etiqueta">[[#{correo.cuenta}]]</label>
                     <input type="email" class="entrada" required th:field="*{correo}">
-                    <label class="etiqueta">Contraseña de la Cuenta</label>
+                    <label class="etiqueta"></label>
                     <input type="password" class="entrada" required th:field="*{password}">
-                    <label class="etiqueta">Rol de la Cuenta</label>
+                    <label class="etiqueta">[[#{rol.cuenta}]]</label>
                     <div class="contenedor-radio">
                         <div>
                             <input type="radio" th:value="ADMIN" class="radio" th:field="*{rol}" required>
-                            <label class="etiqueta">Administrador</label>
+                            <label class="etiqueta">[[#{rol.administrador}]]</label>
                         </div>
                         <div>
                             <input type="radio" th:value="ING" class="radio" th:field="*{rol}" required>
-                            <label class="etiqueta">Ingeniero</label>
+                            <label class="etiqueta">[[#{rol.ingeniero}]]</label>
                         </div>
                     </div>
-                    <button type="submit" class="guardar">Guardar</button>
+                    <button type="submit" class="guardar">[[#{accion.guardar}]]</button>
                 </form>
             </div>
         </section>
