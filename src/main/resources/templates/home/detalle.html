@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+    <head th:replace="~{layout/plantilla :: head}">
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+        <section th:replace="~{home/fragmentos :: botonesEditar2}" ></section>
+        <div class="detalle-container">
+            <div class="detalle-izquierda">
+                <h1>Información del Proyecto</h1>
+                <p><strong>Nombre:</strong> <span th:text="${proyecto.nombre}"></span></p>
+                <p><strong>Descripcion:</strong> <span th:text="${proyecto.descripcion}"></span></p>
+                <div class="mb-3">
+                    <label for="imagen">Imagen Proyecto</label><br><br>
+                    <img id="blah" alt="your image" height="350" th:src="${proyecto.rutaImagen}" />
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

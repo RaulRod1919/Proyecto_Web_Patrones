@@ -3,7 +3,7 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
 -->
-<html>
+<html xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
@@ -29,7 +29,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <a th:href="@{/}"><div class="flecha-arriba">
                         <img src="/img/punta-de-flecha-hacia-arriba.png" alt="Flecha"/>
                     </div></a>
-                <a href=""><div class="flecha-abajo">
+                <a th:href="@{/home/proyectos}"><div class="flecha-abajo">
                         <img src="/img/punta-de-flecha-hacia-abajo.png" alt="Flecha"/>
                     </div></a>
             </div>
@@ -41,115 +41,258 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
         </section>
-        
+
+        <section class="quines-somos tipos-cons" th:fragment="proyectos">
+            <div class="contenedor-home">
+                <h1>Proyectos Realizados</h1>
+                <a th:href="@{/home/tiposCons}"><div class="flecha-arriba">
+                        <img src="/img/punta-de-flecha-hacia-arriba.png" alt="Flecha"/>
+                    </div></a>
+                <button type="button" class="btn-panel btn-crud agregar"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#agregarProyecto" sec:authorize="hasRole('ROLE_ADMIN')">Agregar</button>
+
+            </div>
+            <div class="contenedor-info">
+                <h2>Información</h2>
+                <div>
+                    <div th:each="p : ${proyectos}" class="mb-3">
+                        <a th:href="@{'/home/detalle/' + ${p.idProyectoRealizado}}"
+                           class="btn btn-primary w-100 btn-proyecto d-flex justify-content-between align-items-center">
+                            <span th:text="${p.nombre} ">Nombre del Proyecto </span>
+                            <i class="fa-solid fa-up-right-from-square "></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="modal">
+            <div id="agregarProyecto" 
+                 class="modal fade" 
+                 tabindex="-1" 
+                 aria-labelledby="exampleModalLabel" 
+                 aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-info text-white">
+                            <h5 class="modal-title">Proyecto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div> 
+                        <form th:object="${proyecto}" th:action="@{/home/save}"
+                              method="POST" class="was-validated" enctype="multipart/form-data">
+                            <div class="modal-body">
+                                <div class="mb-3">
+                                    <label for="descripcion">Nombre</label>
+                                    <input type="text" class="form-control" th:field="*{nombre}" required="true"/>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="descripcion">Descripcion</label>
+                                    <textarea rows="3" type="text" class="form-control" required="true" th:field="*{descripcion}"></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="imagen">Ruta de la Imagen</label>
+                                    <input class="form-control" 
+                                           type="file" 
+                                           name="imagenFile" 
+                                           onchange="readURL(this);" required="true"/>
+                                    <img id="blah" src="#" alt="your image" height="200"/>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="submit">Guardar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <div class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-light" th:fragment="registro">
-                <div class="row w-75 shadow-lg rounded-4 overflow-hidden">
+            <div class="row w-75 shadow-lg rounded-4 overflow-hidden">
 
-                    <!-- Sección de formulario -->
-                    <div class="col-md-6 p-5 bg-white">
-                        <h2 class="mb-4">Registro</h2>
+                <!-- Sección de formulario -->
+                <div class="col-md-6 p-5 bg-white">
+                    <h2 class="mb-4">Registro</h2>
 
-                        <!-- Íconos sociales -->
-                        <div class="d-flex justify-content-around mb-4">
-                            <img src="/img/linkedin.png" alt="LinkedIn" class="icono">
-                            <img src="/img/chrome.png" alt="Chrome" class="icono">
-                            <img src="/img/gmail.png" alt="Gmail" class="icono">
-                            <img src="/img/facebook.png" alt="Facebook" class="icono">
-                        </div>
-                        
-                        <div th:if="${mensaje}" class="alert alert-danger" role="alert">
-                            <p th:text="${mensaje}">HOLA</p>
-                        </div>
-
-                        <!-- Formulario -->
-                        <form th:action="@{/activarse}" method="post">
-                            <div class="mb-3 input-group">
-                                <span class="input-group-text">
-                                    <img src="/img/user.png" alt="Usuario" width="20">
-                                </span>
-                                <input type="text" class="form-control" name="nombre" placeholder="Nombre de Usuario" required>
-                            </div>
-
-                            <div class="mb-3 input-group">
-                                <span class="input-group-text">
-                                    <img src="/img/email.png" alt="email" width="20">
-                                </span>
-                                <input type="email" class="form-control" name="email" placeholder="Email" required>
-                            </div>
-
-                            <div class="mb-3 input-group">
-                                <span class="input-group-text">
-                                    <img src="/img/lock.png" alt="password" width="20">
-                                </span>
-                                <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
-                            </div>
-
-                            <button type="submit" class="btn btn-registrar w-100">Registrarse</button>
-                        </form>
+                    <!-- Íconos sociales -->
+                    <div class="d-flex justify-content-around mb-4">
+                        <img src="/img/linkedin.png" alt="LinkedIn" class="icono">
+                        <img src="/img/chrome.png" alt="Chrome" class="icono">
+                        <img src="/img/gmail.png" alt="Gmail" class="icono">
+                        <img src="/img/facebook.png" alt="Facebook" class="icono">
                     </div>
 
-                    <!-- Sección lateral -->
-                    <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
-                        <h2 class="fw-bold mb-3">¡Bienvenido!</h2>
-                        <p class="mb-4">Ingrese sus datos personales para todas las funciones del sitio.</p>
-                        <a th:href="@{/login}" class="btn btn-outline-light rounded-pill px-4">Iniciar Sesión</a>
+                    <div th:if="${mensaje}" class="alert alert-danger" role="alert">
+                        <p th:text="${mensaje}">HOLA</p>
+                    </div>
+
+                    <!-- Formulario -->
+                    <form th:action="@{/activarse}" method="post">
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">
+                                <img src="/img/user.png" alt="Usuario" width="20">
+                            </span>
+                            <input type="text" class="form-control" name="nombre" placeholder="Nombre de Usuario" required>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">
+                                <img src="/img/email.png" alt="email" width="20">
+                            </span>
+                            <input type="email" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">
+                                <img src="/img/lock.png" alt="password" width="20">
+                            </span>
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-registrar w-100">Registrarse</button>
+                    </form>
+                </div>
+
+                <!-- Sección lateral -->
+                <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
+                    <h2 class="fw-bold mb-3">¡Bienvenido!</h2>
+                    <p class="mb-4">Ingrese sus datos personales para todas las funciones del sitio.</p>
+                    <a th:href="@{/login}" class="btn btn-outline-light rounded-pill px-4">Iniciar Sesión</a>
+                </div>
+            </div>
+        </div>
+
+        <section th:fragment="botonesEditar2" sec:authorize="hasRole('ROLE_ADMIN')">
+            <div class="container py-4 mb-4">
+                <div class="row center">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/home/proyectos}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{'/home/editar/' + ${proyecto.idProyectoRealizado}}" class="btn btn-success">
+                            <i class="fas fa-check"></i> Editar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/home/eliminar/}+${proyecto.idProyectoRealizado}" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Eliminar
+                        </a>
                     </div>
                 </div>
             </div>
-        
+        </section>
+
+        <section th:fragment="botonesEditar" sec:authorize="hasRole('ROLE_ADMIN')">
+            <div class="container py-4 mb-4">
+                <div class="row center2">
+                    <div class="col-md-4 d-grid">
+                        <a th:href="@{/proyecto/panel}" class="btn btn-primary">
+                            <i class="fas fa-arrow-left"></i> Regresar
+                        </a>
+                    </div>
+                    <div class="col-md-4 d-grid">
+                        <button type="submit" class="btn btn-success">
+                            <i class="fas fa-check"></i> Guardar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section th:fragment="editarProyecto">
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <form method="POST"
+                          th:action="@{/home/save}"
+                          th:object="${proyecto}"
+                          class="was-validated"                          
+                          enctype="multipart/form-data">
+                        <input type="hidden" th:field="*{idProyectoRealizado}"/>
+                        <section th:replace="~{home/fragmentos :: botonesEditar}"/>
+                        <div id=details>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="mb-3">
+                                                <label for="descripcion">Nombre</label>
+                                                <input type="text" class="form-control" th:field="*{nombre}" required="true"/>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="descripcion">Descripcion</label>
+                                                <textarea rows="3" type="text" class="form-control" required="true" th:field="*{descripcion}"></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="imagen">Ruta de la Imagen</label>
+                                                <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
+                                                <img id="blah" alt="your image" height="350" th:src="${proyecto.rutaImagen}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <div class="container-fluid vh-100 d-flex align-items-center justify-content-center bg-light" th:fragment="activar">
-                <div class="row w-75 shadow-lg rounded-4 overflow-hidden">
+            <div class="row w-75 shadow-lg rounded-4 overflow-hidden">
 
-                    <!-- Sección de formulario -->
-                    <div class="col-md-6 p-5 bg-white">
+                <!-- Sección de formulario -->
+                <div class="col-md-6 p-5 bg-white">
 
-                        <!-- Íconos sociales -->
-                        <div class="d-flex justify-content-around mb-4">
-                            <img src="/img/linkedin.png" alt="LinkedIn" class="icono">
-                            <img src="/img/chrome.png" alt="Chrome" class="icono">
-                            <img src="/img/gmail.png" alt="Gmail" class="icono">
-                            <img src="/img/facebook.png" alt="Facebook" class="icono">
+                    <!-- Íconos sociales -->
+                    <div class="d-flex justify-content-around mb-4">
+                        <img src="/img/linkedin.png" alt="LinkedIn" class="icono">
+                        <img src="/img/chrome.png" alt="Chrome" class="icono">
+                        <img src="/img/gmail.png" alt="Gmail" class="icono">
+                        <img src="/img/facebook.png" alt="Facebook" class="icono">
+                    </div>
+
+                    <!-- Formulario -->
+                    <form th:action="@{/home/activado}" method="POST" th:object="${usuario}">
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">
+                                <img src="/img/user.png" alt="Usuario" width="20">
+                            </span>
+                            <input type="text" class="form-control" placeholder="Nombre de Usuario" required 
+                                   th:field="*{username}" readonly>
                         </div>
 
-                        <!-- Formulario -->
-                        <form th:action="@{/home/activado}" method="POST" th:object="${usuario}">
-                            <div class="mb-3 input-group">
-                                <span class="input-group-text">
-                                    <img src="/img/user.png" alt="Usuario" width="20">
-                                </span>
-                                <input type="text" class="form-control" placeholder="Nombre de Usuario" required 
-                                       th:field="*{username}" readonly>
-                            </div>
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">
+                                <img src="/img/email.png" alt="email" width="20">
+                            </span>
+                            <input type="email" class="form-control" name="email" placeholder="Email" required 
+                                   th:field="*{correo}" readonly>
+                        </div>
 
-                            <div class="mb-3 input-group">
-                                <span class="input-group-text">
-                                    <img src="/img/email.png" alt="email" width="20">
-                                </span>
-                                <input type="email" class="form-control" name="email" placeholder="Email" required 
-                                       th:field="*{correo}" readonly>
-                            </div>
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">
+                                <img src="/img/lock.png" alt="password" width="20">
+                            </span>
+                            <input type="password" class="form-control" name="password" placeholder="Contraseña" required 
+                                   th:field="*{password}">
+                        </div>
 
-                            <div class="mb-3 input-group">
-                                <span class="input-group-text">
-                                    <img src="/img/lock.png" alt="password" width="20">
-                                </span>
-                                <input type="password" class="form-control" name="password" placeholder="Contraseña" required 
-                                       th:field="*{password}">
-                            </div>
+                        <!-- Campo oculto para rol -->
+                        <input type="hidden" name="rol" value="USER">
 
-                            <!-- Campo oculto para rol -->
-                            <input type="hidden" name="rol" value="USER">
+                        <button type="submit" class="btn btn-registrar w-100">Activar</button>
+                    </form>
+                </div>
 
-                            <button type="submit" class="btn btn-registrar w-100">Activar</button>
-                        </form>
-                    </div>
-
-                    <!-- Sección lateral -->
-                    <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
-                        <h2 class="fw-bold mb-3">Activación de Usuario</h2>
-                        <p class="mb-4">Este es el apartado donde podras activar tu cuenta de usuario, rellana esos datos para continuar.</p>
-                    </div>
+                <!-- Sección lateral -->
+                <div class="col-md-6 p-5 text-white text-center seccion-azul d-flex flex-column justify-content-center">
+                    <h2 class="fw-bold mb-3">Activación de Usuario</h2>
+                    <p class="mb-4">Este es el apartado donde podras activar tu cuenta de usuario, rellana esos datos para continuar.</p>
                 </div>
             </div>
+        </div>
     </body>
 </html>

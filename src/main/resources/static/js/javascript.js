@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", function(){
             }
         });
     }
+    
+    
 });
 
 /* La siguiente función se utiliza para visualizar la imagen seleccionada en la

@@ -145,23 +145,6 @@ p{
     transform: translateY(-100%);
 }
 
-.migajas{
-    position: absolute;
-    width: auto;
-    background-color: rgba(43, 45, 51, 1);
-    top: 17%;
-    left: 0;
-    color: white;
-    box-sizing: border-box;
-    padding: 0.5em;
-    border-top-right-radius: 999999999px;
-    border-bottom-right-radius: 99999999px;
-}
-
-.migajas p{
-    margin: 0;
-}
-
 .contenedor-info{
     display: grid;
     grid-template-rows: 0.1fr 1fr;
@@ -407,4 +390,27 @@ th, td {
 
 .card{
     padding: 3%;
+}
+
+.inf{
+    width: 100% !important;
+}
+
+.agregar{
+    width: 15% !important;
+    position: absolute;
+    top: 95%;
+    transform: translateY(-100%);
+}
+
+.center{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+    place-items: center;
+}
+
+.center2{
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    place-items: center;
 }

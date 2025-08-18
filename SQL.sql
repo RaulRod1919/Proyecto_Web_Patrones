@@ -47,6 +47,7 @@ CREATE TABLE proyectos_realizados (
   id_empresa INT NOT NULL,
   nombre VARCHAR(50) NOT NULL,
   descripcion blob NOT NULL,
+  ruta_imagen varchar(1024),
   PRIMARY KEY (id_proyecto_realizado),
   foreign key fk_id_empresa (id_empresa) references empresa(id_empresa))
 ENGINE = InnoDB
@@ -80,19 +81,11 @@ CREATE TABLE proyectos (
   fecha_inicio DATE NOT NULL,
   fecha_cierre DATE NOT NULL,
   estado VARCHAR(30) NOT NULL,
+  ruta_imagen varchar(1024),
   progreso INT NOT NULL,
   PRIMARY KEY (id_proyecto),
   foreign key fk_id_servicio (id_servicio) references servicios(id_servicio),
   foreign key fk_correo (correo) references usuarios(correo))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
-
-CREATE TABLE imagenes_proyectos (
-  id_imagen_proyecto INT NOT NULL AUTO_INCREMENT,
-  id_proyecto INT NOT NULL,
-  direccion VARCHAR(50) NOT NULL,
-  PRIMARY KEY (id_imagen_proyecto),
-  foreign key fk_id_proyecto (id_proyecto) references proyectos(id_proyecto))
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
